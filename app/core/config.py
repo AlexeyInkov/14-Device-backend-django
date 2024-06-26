@@ -3,7 +3,7 @@ import sys
 
 class Settings:
 
-    loging_config = {
+    LOGGING_CONFIG = {
         "handlers": [
             {
                 "sink": sys.stdout,
@@ -19,6 +19,9 @@ class Settings:
         ],
         "extra": {"user": "someone"},
     }
+
+    DB_URL = "sqlite+aiosqlite://"
+    DB_ECHO = True
 
 
 settings = Settings()
