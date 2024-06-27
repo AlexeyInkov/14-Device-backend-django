@@ -4,7 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from loguru import logger
 
-from api.v1.endpoints.pribor import router as auth_cookie_router
+from pages.router import router as auth_cookie_router
 from app.core.config import settings
 from app.core.database import create_tables, delete_tables
 from app.utils.helpers import logging
