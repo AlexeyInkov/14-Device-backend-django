@@ -1,7 +1,8 @@
-/.env
+*/.env
 /report/
 /main.py  укажи месяц.lnk
 /.idea
 /nodes.json
 /sourse_data/
 /log/
+*.sqlite3
