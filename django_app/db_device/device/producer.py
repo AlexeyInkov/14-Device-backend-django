@@ -1,10 +1,9 @@
 from kafka import KafkaProducer
 
-from .consumer import consumer
+from db_device.settings import KAFKA_URL
 
-producer = KafkaProducer(bootstrap_servers=["localhost:9092"])
-consumer.poll()
+producer = KafkaProducer(bootstrap_servers=[KAFKA_URL])
 
 
-def send_message(msg):
-    producer.send(topic="my-topic", value=msg.encode())
+def send_message(topic, msg):
+    producer.send(topic, msg)

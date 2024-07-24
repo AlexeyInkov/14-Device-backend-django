@@ -7,6 +7,6 @@ from .producer import send_message
 def message_view(request):
 
     message = "Hello"
-    send_message(message)
+    send_message("my_topic", message.encode())
     context = {"message": message}
     return render(request, "device/message.html", context=context)
