@@ -23,5 +23,20 @@ from .views import message_view
 app_name = "device"
 
 urlpatterns = [
-    path("msg/", message_view),
+    path("msg_to_kafka/", message_view),
+    path("orgs/", message_view),
+    path("org/", message_view),
+    path("org/<pk:int>", message_view),
+    path("org/<pk:int>/update", message_view),
+    path("org/<pk:int>/delete", message_view),
+    path("meter-units/", message_view),
+    path("meter-unit/", message_view),
+    path("meter-unit/<pk:int>", message_view),
+    path("meter-unit/<pk:int>/update", message_view),
+    path("meter-unit/<pk:int>/delete", message_view),
+    path("devices/", message_view),
+    path("device/", message_view),
+    path("device/<pk:int>", message_view),
+    path("device/<pk:int>/update", message_view),
+    path("device/<pk:int>/delete", message_view),
 ]
