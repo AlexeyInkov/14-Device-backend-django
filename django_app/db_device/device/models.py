@@ -11,26 +11,27 @@ class BaseTimeModel(models.Model):
         abstract = True
 
 
-class Customer(BaseTimeModel):
-    name = models.CharField(max_length=100)
-
-    class Meta:
-        verbose_name_plural = "customers"
-
-
-class ServiceOrganization(BaseTimeModel):
+class Organization(BaseTimeModel):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
-        verbose_name_plural = "service_organizations"
+        verbose_name_plural = "organizations"
 
 
 class MeteringUnit(BaseTimeModel):
 
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(
+        Organization,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="metering_units_customer",
+    )
     service_organization = models.ForeignKey(
-        ServiceOrganization, on_delete=models.SET_NULL, null=True
+        Organization,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="metering_units_service_organization",
     )
     address = models.CharField(max_length=255)
     name = models.CharField(max_length=100)
