@@ -15,7 +15,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
 from django.urls import path
 
 from .views import message_view
@@ -24,16 +23,19 @@ app_name = "device"
 
 urlpatterns = [
     path("msg_to_kafka/", message_view),
+    #
     path("orgs/", message_view),
     path("org/", message_view),
     path("org/<pk:int>", message_view),
     path("org/<pk:int>/update", message_view),
     path("org/<pk:int>/delete", message_view),
+    #
     path("meter-units/", message_view),
     path("meter-unit/", message_view),
     path("meter-unit/<pk:int>", message_view),
     path("meter-unit/<pk:int>/update", message_view),
     path("meter-unit/<pk:int>/delete", message_view),
+    #
     path("devices/", message_view),
     path("device/", message_view),
     path("device/<pk:int>", message_view),
