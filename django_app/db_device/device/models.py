@@ -7,10 +7,12 @@ class BaseTimeModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        abstract = True
+
 
 class Customer(BaseTimeModel):
     name = models.CharField(max_length=100)
-
 
     class Meta:
         verbose_name_plural = "customers"
@@ -18,7 +20,7 @@ class Customer(BaseTimeModel):
 
 class ServiceOrganization(BaseTimeModel):
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "service_organizations"
@@ -26,8 +28,10 @@ class ServiceOrganization(BaseTimeModel):
 
 class MeteringUnit(BaseTimeModel):
 
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL)
-    service_organization = models.ForeignKey(ServiceOrganization, on_delete=models.SET_NULL)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    service_organization = models.ForeignKey(
+        ServiceOrganization, on_delete=models.SET_NULL, null=True
+    )
     address = models.CharField(max_length=255)
     name = models.CharField(max_length=100)
 
@@ -55,7 +59,7 @@ class DeviceType(BaseTimeModel):
 class DeviceMod(BaseTimeModel):
 
     name = models.CharField(max_length=100)
-    type_devise = models.ForeignKey(DeviceType, on_delete=models.SET_NULL)
+    type_devise = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "device_mods"
@@ -71,15 +75,19 @@ class DeviceInstallationPoint(BaseTimeModel):
 
 class Device(BaseTimeModel):
 
-    registry_number = models.ForeignKey(DeviceRegistryNumber, on_delete=models.SET_NULL)
-    device_type = models.ForeignKey(DeviceType, on_delete=models.SET_NULL)
-    device_mod = models.ForeignKey(DeviceMod, on_delete=models.SET_NULL)
+    registry_number = models.ForeignKey(
+        DeviceRegistryNumber, on_delete=models.SET_NULL, null=True
+    )
+    device_type = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
+    device_mod = models.ForeignKey(DeviceMod, on_delete=models.SET_NULL, null=True)
     factory_number = models.CharField(max_length=100)
     installation_point = models.ForeignKey(
-        DeviceInstallationPoint, on_delete=models.SET_NULL
+        DeviceInstallationPoint, on_delete=models.SET_NULL, null=True
     )
     notes = models.CharField(max_length=100)
-    metering_unit = models.ForeignKey(MeteringUnit, on_delete=models.SET_NULL)
+    metering_unit = models.ForeignKey(
+        MeteringUnit, on_delete=models.SET_NULL, null=True
+    )
 
     class Meta:
         verbose_name_plural = "devices"
@@ -87,7 +95,7 @@ class Device(BaseTimeModel):
 
 class DeviceVerification(BaseTimeModel):
 
-    device_id = models.ForeignKey(Device, on_delete=models.SET_NULL)
+    device_id = models.ForeignKey(Device, on_delete=models.SET_NULL, null=True)
     organization = models.CharField(max_length=100)
     verification_date = models.DateField(default="1900-01-01")
     valid_date = models.DateField(default="1900-01-01")
