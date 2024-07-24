@@ -5,3 +5,4 @@
 /nodes.json
 /sourse_data/
 /log/
+*.sqlite3
