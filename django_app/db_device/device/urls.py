@@ -24,6 +24,11 @@ from .views import (
     OrganizationDetailView,
     OrganizationUpdateView,
     OrganizationDeleteView,
+    MeteringUnitCreateView,
+    MeteringUnitDetailView,
+    MeteringUnitListView,
+    MeteringUnitUpdateView,
+    MeteringUnitDeleteView,
 )
 
 app_name = "device"
@@ -37,11 +42,11 @@ urlpatterns = [
     path("org/<int:pk>/update/", OrganizationUpdateView.as_view()),
     path("org/<int:pk>/delete/", OrganizationDeleteView.as_view()),
     #
-    path("meter-units/", message_view),
-    path("meter-unit/", message_view),
-    path("meter-unit/<int:pk>", message_view),
-    path("meter-unit/<int:pk>/update", message_view),
-    path("meter-unit/<int:pk>/delete", message_view),
+    path("meter-units/", MeteringUnitListView.as_view()),
+    path("meter-unit/", MeteringUnitCreateView.as_view()),
+    path("meter-unit/<int:pk>", MeteringUnitDetailView.as_view()),
+    path("meter-unit/<int:pk>/update", MeteringUnitUpdateView.as_view()),
+    path("meter-unit/<int:pk>/delete", MeteringUnitDeleteView.as_view()),
     #
     path("devices/", message_view),
     path("device/", message_view),
