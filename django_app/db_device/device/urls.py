@@ -18,27 +18,34 @@ Including another URLconf
 from django.urls import path
 
 from .views import message_view
+from .views import (
+    OrganizationListView,
+    OrganizationCreateView,
+    OrganizationDetailView,
+    OrganizationUpdateView,
+    OrganizationDeleteView,
+)
 
 app_name = "device"
 
 urlpatterns = [
     path("msg_to_kafka/", message_view),
     #
-    path("orgs/", message_view),
-    path("org/", message_view),
-    path("org/<pk:int>", message_view),
-    path("org/<pk:int>/update", message_view),
-    path("org/<pk:int>/delete", message_view),
+    path("orgs/", OrganizationListView.as_view()),
+    path("org/", OrganizationCreateView.as_view()),
+    path("org/<int:pk>/", OrganizationDetailView.as_view()),
+    path("org/<int:pk>/update/", OrganizationUpdateView.as_view()),
+    path("org/<int:pk>/delete/", OrganizationDeleteView.as_view()),
     #
     path("meter-units/", message_view),
     path("meter-unit/", message_view),
-    path("meter-unit/<pk:int>", message_view),
-    path("meter-unit/<pk:int>/update", message_view),
-    path("meter-unit/<pk:int>/delete", message_view),
+    path("meter-unit/<int:pk>", message_view),
+    path("meter-unit/<int:pk>/update", message_view),
+    path("meter-unit/<int:pk>/delete", message_view),
     #
     path("devices/", message_view),
     path("device/", message_view),
-    path("device/<pk:int>", message_view),
-    path("device/<pk:int>/update", message_view),
-    path("device/<pk:int>/delete", message_view),
+    path("device/<int:pk>", message_view),
+    path("device/<int:pk>/update", message_view),
+    path("device/<int:pk>/delete", message_view),
 ]
