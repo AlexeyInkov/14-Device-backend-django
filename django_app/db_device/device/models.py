@@ -65,18 +65,21 @@ class MeteringUnit(BaseTimeModel):
         Organization,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name="metering_units_customer",
     )
     service_organization = models.ForeignKey(
         Organization,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name="metering_units_service_organization",
     )
     tso = models.ForeignKey(
         TSOrganization,
         on_delete=models.SET_NULL,
         null=True,
+        blank=True,
         related_name="metering_units_tso",
     )
     address = models.ForeignKey(
@@ -89,6 +92,9 @@ class MeteringUnit(BaseTimeModel):
 
     class Meta:
         verbose_name_plural = "metering_units"
+
+    def __str__(self):
+        return str(self.address)
 
 
 class DeviceRegistryNumber(BaseTimeModel):
