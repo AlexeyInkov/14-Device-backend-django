@@ -104,23 +104,32 @@ class DeviceRegistryNumber(BaseTimeModel):
     class Meta:
         verbose_name_plural = "device_registry_numbers"
 
+    def __str__(self):
+        return str(self.registry_number)
+
 
 class DeviceType(BaseTimeModel):
 
     type = models.CharField(max_length=100)
-    name = models.CharField(max_length=100)
+    registry_number = models.ForeignKey(DeviceRegistryNumber, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "device_types"
 
+    def __str__(self):
+        return self.type
+
 
 class DeviceMod(BaseTimeModel):
 
-    name = models.CharField(max_length=100)
+    mod = models.CharField(max_length=100)
     type_devise = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "device_mods"
+
+    def __str__(self):
+        return self.mod
 
 
 class DeviceInstallationPoint(BaseTimeModel):
@@ -129,6 +138,9 @@ class DeviceInstallationPoint(BaseTimeModel):
 
     class Meta:
         verbose_name_plural = "device_installation_points"
+
+    def __str__(self):
+        return self.name
 
 
 class Device(BaseTimeModel):
