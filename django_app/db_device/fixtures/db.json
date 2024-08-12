@@ -1,0 +1,293 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2024-08-12T20:06:52.061Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "СПб,Науки,2,None,None,None",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2024-08-12T20:07:00.410Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "1",
+    "object_repr": "ТЭК",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2024-08-12T20:07:09.684Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "ГАЛАКС",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2024-08-12T20:07:44.282Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "2",
+    "object_repr": "ЖКС2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2024-08-12T20:12:43.698Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "MeteringUnit object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2024-08-12T20:17:08.424Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "СПб,Науки,2,None,None,None",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2024-08-12T20:23:26.075Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "DeviceInstallationPoint object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2024-08-12T20:33:03.691Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "39145",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2024-08-12T20:34:51.656Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Комплекты термометров сопротивления из платины технические разностные",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2024-08-12T20:35:47.162Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "КТПТР-05",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2024-08-12T20:41:34.937Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "КТПТР-051605",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$a6RiWO7jYGdb8bG0lXo2Eg$uKusKxYFCTyqdzdwYbAp/yyS1jvtTLL1+8jGxwQdAAc=",
+    "last_login": "2024-08-12T20:06:33.405Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-08-12T20:06:23.228Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "q21285hxoflivi2pkuqtpec88rkb88mu",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCgzLTj0n3P0AwwStVAUtqV8e7apAvd_vfef6mJtzVPW5NlmpM6K6tOv1vg-JCyg3Tncqs61rIuc9C7og_a9FiTPC-H-3eQueVvjcjsB0ASA1ePFjE56okAREz0QJEtOm-gFwdiLFAXOpQhULQEltT7A7OENnI:1sdbJJ:-C32de2h6bBHKGNMOpg7vIT04_BhTxaZpV_AiZOIi34",
+    "expire_date": "2024-08-26T20:06:33.468Z"
+  }
+},
+{
+  "model": "device.tsorganization",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:07:00.409Z",
+    "updated_at": "2024-08-12T20:07:00.409Z",
+    "name": "ТЭК"
+  }
+},
+{
+  "model": "device.organization",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:07:09.670Z",
+    "updated_at": "2024-08-12T20:07:09.670Z",
+    "name": "ГАЛАКС",
+    "user": 1
+  }
+},
+{
+  "model": "device.organization",
+  "pk": 2,
+  "fields": {
+    "created_at": "2024-08-12T20:07:44.280Z",
+    "updated_at": "2024-08-12T20:07:44.280Z",
+    "name": "ЖКС2",
+    "user": 1
+  }
+},
+{
+  "model": "device.address",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:06:52.060Z",
+    "updated_at": "2024-08-12T20:06:52.060Z",
+    "city": "СПб",
+    "street": "Науки",
+    "house_number": "2",
+    "corp": null,
+    "liter": null,
+    "ITP": null
+  }
+},
+{
+  "model": "device.meteringunit",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:12:43.696Z",
+    "updated_at": "2024-08-12T20:12:43.696Z",
+    "customer": 1,
+    "service_organization": 2,
+    "tso": 1,
+    "address": 1,
+    "totem_number": "1"
+  }
+},
+{
+  "model": "device.meteringunit",
+  "pk": 2,
+  "fields": {
+    "created_at": "2024-08-12T20:17:08.423Z",
+    "updated_at": "2024-08-12T20:17:08.423Z",
+    "customer": 2,
+    "service_organization": null,
+    "tso": 1,
+    "address": 1,
+    "totem_number": "2"
+  }
+},
+{
+  "model": "device.deviceregistrynumber",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:33:03.690Z",
+    "updated_at": "2024-08-12T20:33:03.690Z",
+    "registry_number": 39145
+  }
+},
+{
+  "model": "device.devicetype",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:34:51.655Z",
+    "updated_at": "2024-08-12T20:34:51.655Z",
+    "type": "Комплекты термометров сопротивления из платины технические разностные",
+    "registry_number": 1
+  }
+},
+{
+  "model": "device.devicemod",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:35:47.161Z",
+    "updated_at": "2024-08-12T20:35:47.161Z",
+    "mod": "КТПТР-05",
+    "type_devise": 1
+  }
+},
+{
+  "model": "device.deviceinstallationpoint",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:23:26.074Z",
+    "updated_at": "2024-08-12T20:23:26.074Z",
+    "name": "Подающий"
+  }
+},
+{
+  "model": "device.device",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-08-12T20:41:34.936Z",
+    "updated_at": "2024-08-12T20:41:34.936Z",
+    "registry_number": 1,
+    "device_type": 1,
+    "device_mod": 1,
+    "factory_number": "1605",
+    "installation_point": 1,
+    "notes": null,
+    "metering_unit": 1
+  }
+}
+]
