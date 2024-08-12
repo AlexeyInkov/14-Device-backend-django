@@ -111,7 +111,9 @@ class DeviceRegistryNumber(BaseTimeModel):
 class DeviceType(BaseTimeModel):
 
     type = models.CharField(max_length=100)
-    registry_number = models.ForeignKey(DeviceRegistryNumber, on_delete=models.SET_NULL, null=True)
+    registry_number = models.ForeignKey(
+        DeviceRegistryNumber, on_delete=models.SET_NULL, null=True
+    )
 
     class Meta:
         verbose_name_plural = "device_types"
