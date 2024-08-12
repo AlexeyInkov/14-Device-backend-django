@@ -34,6 +34,24 @@ class Address(BaseTimeModel):
     liter = models.CharField(max_length=100, null=True, blank=True)
     ITP = models.CharField(max_length=10, null=True, blank=True)
 
+    class Meta:
+        verbose_name_plural = "addresses"
+
+    def __str__(self):
+        return ",".join(
+            map(
+                str,
+                (
+                    self.city,
+                    self.street,
+                    self.house_number,
+                    self.corp,
+                    self.liter,
+                    self.ITP,
+                ),
+            )
+        )
+
 
 class MeteringUnit(BaseTimeModel):
 
