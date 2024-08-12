@@ -148,29 +148,39 @@ class DeviceInstallationPoint(BaseTimeModel):
 class Device(BaseTimeModel):
 
     registry_number = models.ForeignKey(
-        DeviceRegistryNumber, on_delete=models.SET_NULL, null=True
+        DeviceRegistryNumber, on_delete=models.SET_NULL, null=True, blank=True
     )
-    device_type = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
-    device_mod = models.ForeignKey(DeviceMod, on_delete=models.SET_NULL, null=True)
+    device_type = models.ForeignKey(
+        DeviceType, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    device_mod = models.ForeignKey(
+        DeviceMod, on_delete=models.SET_NULL, null=True, blank=True
+    )
     factory_number = models.CharField(max_length=100)
     installation_point = models.ForeignKey(
-        DeviceInstallationPoint, on_delete=models.SET_NULL, null=True
+        DeviceInstallationPoint, on_delete=models.SET_NULL, null=True, blank=True
     )
-    notes = models.CharField(max_length=100)
+    notes = models.CharField(max_length=100, null=True, blank=True)
     metering_unit = models.ForeignKey(
-        MeteringUnit, on_delete=models.SET_NULL, null=True
+        MeteringUnit, on_delete=models.SET_NULL, null=True, blank=True
     )
 
     class Meta:
         verbose_name_plural = "devices"
 
+    def __str__(self):
+        return f"{str(self.device_mod)} №{self.factory_number}"
+
 
 class DeviceVerification(BaseTimeModel):
 
     device_id = models.ForeignKey(Device, on_delete=models.SET_NULL, null=True)
-    organization = models.CharField(max_length=100)
+    organization = models.CharField(max_length=100, blank=True, null=True)
     verification_date = models.DateField(default="1900-01-01")
     valid_date = models.DateField(default="1900-01-01")
 
     class Meta:
         verbose_name_plural = "device_verifications"
+
+    def __str__(self):
+        return f"{self.verification_date}"
