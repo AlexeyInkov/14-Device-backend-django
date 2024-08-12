@@ -11,12 +11,28 @@ class BaseTimeModel(models.Model):
         abstract = True
 
 
+class TSOrganization(BaseTimeModel):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "ts_organizations"
+
+
 class Organization(BaseTimeModel):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "organizations"
+
+
+class Address(BaseTimeModel):
+    city = models.CharField(max_length=100)
+    street = models.CharField(max_length=100)
+    house_number = models.CharField(max_length=100)
+    corp = models.CharField(max_length=100)
+    liter = models.CharField(max_length=100)
+    ITP = models.CharField(max_length=10)
 
 
 class MeteringUnit(BaseTimeModel):
@@ -33,8 +49,19 @@ class MeteringUnit(BaseTimeModel):
         null=True,
         related_name="metering_units_service_organization",
     )
-    address = models.CharField(max_length=255)
-    name = models.CharField(max_length=100)
+    tso = models.ForeignKey(
+        TSOrganization,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="metering_units_tso",
+    )
+    address = models.ForeignKey(
+        Address,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="metering_units_address",
+    )
+    totem_number = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "metering_units"
