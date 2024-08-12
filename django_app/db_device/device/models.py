@@ -17,6 +17,9 @@ class TSOrganization(BaseTimeModel):
     class Meta:
         verbose_name_plural = "ts_organizations"
 
+    def __str__(self):
+        return self.name
+
 
 class Organization(BaseTimeModel):
     name = models.CharField(max_length=100)
@@ -24,6 +27,9 @@ class Organization(BaseTimeModel):
 
     class Meta:
         verbose_name_plural = "organizations"
+
+    def __str__(self):
+        return self.name
 
 
 class Address(BaseTimeModel):
