@@ -28,7 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DJANGO_DEBUG", True))
+debug = os.environ.get("DJANGO_DEBUG", True)
+DEBUG = debug == "True"
+
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "0.0.0.0").split(",")
 print(ALLOWED_HOSTS)
@@ -91,6 +93,7 @@ if DEBUG:
         }
     }
 else:
+    print("postgresql")
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
