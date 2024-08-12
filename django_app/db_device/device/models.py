@@ -27,12 +27,12 @@ class Organization(BaseTimeModel):
 
 
 class Address(BaseTimeModel):
-    city = models.CharField(max_length=100)
-    street = models.CharField(max_length=100)
-    house_number = models.CharField(max_length=100)
-    corp = models.CharField(max_length=100)
-    liter = models.CharField(max_length=100)
-    ITP = models.CharField(max_length=10)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    street = models.CharField(max_length=100, null=True, blank=True)
+    house_number = models.CharField(max_length=100, null=True, blank=True)
+    corp = models.CharField(max_length=100, null=True, blank=True)
+    liter = models.CharField(max_length=100, null=True, blank=True)
+    ITP = models.CharField(max_length=10, null=True, blank=True)
 
 
 class MeteringUnit(BaseTimeModel):
