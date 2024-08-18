@@ -30,27 +30,31 @@ from .views import (
     MeteringUnitUpdateView,
     MeteringUnitDeleteView,
 )
+from .views import MenuListAPIView, AddressListAPIView, DeviceListAPIView
 
 app_name = "device"
 
 urlpatterns = [
-    path("msg_to_kafka/", message_view),
-    #
-    path("orgs/", OrganizationListView.as_view()),
-    path("org/", OrganizationCreateView.as_view()),
-    path("org/<int:pk>/", OrganizationDetailView.as_view()),
-    path("org/<int:pk>/update/", OrganizationUpdateView.as_view()),
-    path("org/<int:pk>/delete/", OrganizationDeleteView.as_view()),
-    #
-    path("meter-units/", MeteringUnitListView.as_view()),
-    path("meter-unit/", MeteringUnitCreateView.as_view()),
-    path("meter-unit/<int:pk>", MeteringUnitDetailView.as_view()),
-    path("meter-unit/<int:pk>/update", MeteringUnitUpdateView.as_view()),
-    path("meter-unit/<int:pk>/delete", MeteringUnitDeleteView.as_view()),
-    #
-    path("devices/", message_view),
-    path("device/", message_view),
-    path("device/<int:pk>", message_view),
-    path("device/<int:pk>/update", message_view),
-    path("device/<int:pk>/delete", message_view),
+    path("menu/", MenuListAPIView.as_view(), name="menu"),
+    path("addresses/", AddressListAPIView.as_view(), name="addresses"),
+    path("devices/", DeviceListAPIView.as_view(), name="devices"),
+    # path("msg_to_kafka/", message_view),
+    # #
+    # path("orgs/", OrganizationListView.as_view()),
+    # path("org/", OrganizationCreateView.as_view()),
+    # path("org/<int:pk>/", OrganizationDetailView.as_view()),
+    # path("org/<int:pk>/update/", OrganizationUpdateView.as_view()),
+    # path("org/<int:pk>/delete/", OrganizationDeleteView.as_view()),
+    # #
+    # path("meter-units/", MeteringUnitListView.as_view()),
+    # path("meter-unit/", MeteringUnitCreateView.as_view()),
+    # path("meter-unit/<int:pk>", MeteringUnitDetailView.as_view()),
+    # path("meter-unit/<int:pk>/update", MeteringUnitUpdateView.as_view()),
+    # path("meter-unit/<int:pk>/delete", MeteringUnitDeleteView.as_view()),
+    # #
+    # path("devices/", message_view),
+    # path("device/", message_view),
+    # path("device/<int:pk>", message_view),
+    # path("device/<int:pk>/update", message_view),
+    # path("device/<int:pk>/delete", message_view),
 ]
