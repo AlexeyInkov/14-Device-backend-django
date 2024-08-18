@@ -146,23 +146,42 @@ class DeviceInstallationPoint(BaseTimeModel):
 
 
 class Device(BaseTimeModel):
-
+    metering_unit = models.ForeignKey(
+        MeteringUnit,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+    installation_point = models.ForeignKey(
+        DeviceInstallationPoint,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
     registry_number = models.ForeignKey(
-        DeviceRegistryNumber, on_delete=models.SET_NULL, null=True, blank=True
+        DeviceRegistryNumber,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
     device_type = models.ForeignKey(
-        DeviceType, on_delete=models.SET_NULL, null=True, blank=True
+        DeviceType,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
     device_mod = models.ForeignKey(
-        DeviceMod, on_delete=models.SET_NULL, null=True, blank=True
+        DeviceMod,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
     factory_number = models.CharField(max_length=100)
-    installation_point = models.ForeignKey(
-        DeviceInstallationPoint, on_delete=models.SET_NULL, null=True, blank=True
-    )
-    notes = models.CharField(max_length=100, null=True, blank=True)
-    metering_unit = models.ForeignKey(
-        MeteringUnit, on_delete=models.SET_NULL, null=True, blank=True
+
+    notes = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
     )
 
     class Meta:
@@ -174,10 +193,13 @@ class Device(BaseTimeModel):
 
 class DeviceVerification(BaseTimeModel):
 
-    device_id = models.ForeignKey(Device, on_delete=models.SET_NULL, null=True)
+    device_id = models.ForeignKey(
+        Device, on_delete=models.SET_NULL, null=True, related_name="verifications"
+    )
     organization = models.CharField(max_length=100, blank=True, null=True)
     verification_date = models.DateField(default="1900-01-01")
     valid_date = models.DateField(default="1900-01-01")
+    is_actual = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = "device_verifications"
