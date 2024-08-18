@@ -6,19 +6,18 @@ from ..models import (
     MeteringUnit,
     Device,
     DeviceVerification,
-    Organization,
 )
 from ..serializers import MenuSerializer, AddressSerializer, DeviceSerializer
 
 
 class MenuListAPIView(ListAPIView):
-    queryset = TSOrganization.objects.prefetch_related(
-        Prefetch(
-            "metering_units_tso",
-            queryset=MeteringUnit.objects.all(),  # TODO фильтр повторов
-            to_attr="filtered_metering_units_tso",
-        )
-    )
+    queryset = TSOrganization.objects.prefetch_related("metering_units_tso")
+    #     Prefetch(
+    #         ,
+    #         queryset=MeteringUnit.objects.all(),
+    #         to_attr="filtered_metering_units_tso",
+    #     )
+    # )
     serializer_class = MenuSerializer
 
 
