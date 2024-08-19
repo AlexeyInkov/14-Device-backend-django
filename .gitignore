@@ -1,15 +1,11 @@
 *.env
-
-/.idea
-/nodes.json
-/sourse_data/
-backend/log/
+/.idea/
 *.sqlite3
-*/staticfiles/
-/backend/django_app/db_device/db/
-/backend/django_app/db_device/staticfiles/
-/2. Init Database/
-backend/docker-compose.yml
-/frontend/
-/__pycache__
+*staticfiles/
+*django_app/db_device/db/
+*django_app/db_device/staticfiles/
+docker-compose.yml
+/__pycache__/
 *.pyc
+/log/
+
