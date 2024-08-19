@@ -5,7 +5,6 @@ from .models import (
     TSOrganization,
     Device,
     DeviceVerification,
-    Organization,
 )
 
 
