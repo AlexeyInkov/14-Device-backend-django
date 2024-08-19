@@ -162,6 +162,6 @@ KAFKA_URL = os.environ.get("KAFKA_URL")
 # CORS_ORIGIN_WHITELIST = ("http://localhost:8000",)
 
 CORS_ORIGIN_WHITELIST = [
-    "http://192.168.0.101:8000",
-    "http://localhost:8000",
+    "http://192.168.0.101:63342",
+    "http://localhost:63342",
 ]

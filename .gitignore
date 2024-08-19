@@ -1,9 +1,13 @@
 *.env
-/report/
-/main.py  укажи месяц.lnk
+
 /.idea
 /nodes.json
 /sourse_data/
-/log/
+backend/log/
 *.sqlite3
-/django_app/db_device/staticfiles/
+*/staticfiles/
+/backend/django_app/db_device/db/
+/backend/django_app/db_device/staticfiles/
+/2. Init Database/
+backend/docker-compose.yml
+/frontend/
