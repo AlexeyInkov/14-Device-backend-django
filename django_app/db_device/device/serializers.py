@@ -9,18 +9,26 @@ from .models import (
 
 
 class CustomerSerializer(serializers.Serializer):
+    id = serializers.CharField(source="customer__id", read_only=True)
     name = serializers.CharField(source="customer__name", read_only=True)
 
     class Meta:
         model = MeteringUnit
-        fields = ("name",)
+        fields = (
+            "id",
+            "name",
+        )
 
 
 class MenuSerializer(serializers.ModelSerializer):
     customers = serializers.SerializerMethodField()
 
     def get_customers(self, obj):
-        qs = MeteringUnit.objects.filter(tso=obj.id).values("customer__name").distinct()
+        qs = (
+            MeteringUnit.objects.filter(tso=obj.id)
+            .values("customer__id", "customer__name")
+            .distinct()
+        )
         serializer = CustomerSerializer(instance=qs, many=True)
         return serializer.data
 
