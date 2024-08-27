@@ -41,9 +41,10 @@ class DeviceListAPIView(ListAPIView):
 
     def get_queryset(self):
         queryset = (
-            Device.objects.select_related("registry_number")
-            .select_related("device_type")
-            .select_related("device_mod")
+            Device.objects
+            # .select_related("registry_number__device_type_set")
+            .select_related("type_of_file")
+            .select_related("mod")
             .select_related("installation_point")
             .select_related("metering_unit")
             .prefetch_related(  # "verifications")

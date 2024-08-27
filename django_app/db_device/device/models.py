@@ -135,7 +135,6 @@ class DeviceType(BaseTimeModel):
 class DeviceMod(BaseTimeModel):
 
     mod = models.CharField(max_length=100)
-    # type_devise = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "device_mods"

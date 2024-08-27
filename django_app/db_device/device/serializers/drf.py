@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import (
+from ..models import (
     MeteringUnit,
     TSOrganization,
     Device,
@@ -85,8 +85,8 @@ class DeviceSerializer(serializers.ModelSerializer):
     registry_number = serializers.CharField(
         source="registry_number.registry_number", read_only=True
     )
-    device_type = serializers.CharField(source="device_type.type", read_only=True)
-    device_mod = serializers.CharField(source="device_mod.mod", read_only=True)
+    type = serializers.CharField(source="type_of_file.device_type_file", read_only=True)
+    mod = serializers.CharField(source="mod.mod", read_only=True)
     factory_number = serializers.CharField(read_only=True)
     verification = DeviceVerificationSerializer(
         source="filtered_verifications",
@@ -99,8 +99,8 @@ class DeviceSerializer(serializers.ModelSerializer):
         fields = (
             "installation_point",
             "registry_number",
-            "device_type",
-            "device_mod",
+            "type",
+            "mod",
             "factory_number",
             "verification",
         )
