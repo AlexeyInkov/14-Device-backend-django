@@ -228,6 +228,3 @@ class DeviceVerification(BaseTimeModel):
 
     def __str__(self):
         return f"{self.verification_date}"
-
-
-
