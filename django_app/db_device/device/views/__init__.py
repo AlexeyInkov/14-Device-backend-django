@@ -1,5 +1,5 @@
 from .org import (
-    message_view,
+    # message_view,
     OrganizationListView,
     OrganizationCreateView,
     OrganizationDetailView,

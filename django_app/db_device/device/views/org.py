@@ -10,16 +10,17 @@ from django.views.generic import (
 )
 
 from ..models import Organization
-from ..producer import send_message
+
+# from ..producer import send_message
 
 
 # Create your views here.
-def message_view(request: HttpRequest):
-
-    message = "Hello"
-    send_message("my_topic", message.encode())
-    context = {"message": message}
-    return render(request, "device/message.html", context=context)
+# def message_view(request: HttpRequest):
+#
+#     message = "Hello"
+#     send_message("my_topic", message.encode())
+#     context = {"message": message}
+#     return render(request, "device/message.html", context=context)
 
 
 class OrganizationListView(LoginRequiredMixin, ListView):

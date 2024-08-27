@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import message_view
+# from .views import message_view
 from .views import (
     OrganizationListView,
     OrganizationCreateView,
