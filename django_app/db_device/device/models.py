@@ -23,7 +23,6 @@ class TSOrganization(BaseTimeModel):
 
 class Organization(BaseTimeModel):
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "organizations"
@@ -32,13 +31,24 @@ class Organization(BaseTimeModel):
         return self.name
 
 
+class UserToOrganization(BaseTimeModel):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True)
+    actual = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "users_to_organizations"
+
+    def __str__(self):
+        return f"{self.user.name} ({self.organization.name})"
+
+
 class Address(BaseTimeModel):
     city = models.CharField(max_length=100, null=True, blank=True)
     street = models.CharField(max_length=100, null=True, blank=True)
     house_number = models.CharField(max_length=100, null=True, blank=True)
     corp = models.CharField(max_length=100, null=True, blank=True)
     liter = models.CharField(max_length=100, null=True, blank=True)
-    ITP = models.CharField(max_length=10, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "addresses"
@@ -53,7 +63,6 @@ class Address(BaseTimeModel):
                     self.house_number,
                     self.corp,
                     self.liter,
-                    self.ITP,
                 ),
             )
         )
@@ -88,13 +97,14 @@ class MeteringUnit(BaseTimeModel):
         null=True,
         related_name="metering_units_address",
     )
+    ITP = models.CharField(max_length=10, null=True, blank=True)
     totem_number = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "metering_units"
 
     def __str__(self):
-        return str(self.address)
+        return f"{self.address} {self.ITP}"
 
 
 class DeviceRegistryNumber(BaseTimeModel):
