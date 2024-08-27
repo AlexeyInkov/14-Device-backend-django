@@ -12,6 +12,7 @@ from .models import (
     DeviceMod,
     Device,
     DeviceVerification,
+    TypeToRegistry,
 )
 
 admin.site.register(TSOrganization)
@@ -25,3 +26,4 @@ admin.site.register(DeviceType)
 admin.site.register(DeviceMod)
 admin.site.register(Device)
 admin.site.register(DeviceVerification)
+admin.site.register(TypeToRegistry)
