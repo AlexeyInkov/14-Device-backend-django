@@ -210,6 +210,7 @@ class DeviceVerification(BaseTimeModel):
     verification_date = models.DateField(default="1900-01-01")
     valid_date = models.DateField(default="1900-01-01")
     is_actual = models.BooleanField(default=False)
+    is_delete = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = "device_verifications"
