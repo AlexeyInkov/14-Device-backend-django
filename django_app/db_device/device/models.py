@@ -155,6 +155,17 @@ class DeviceInstallationPoint(BaseTimeModel):
         return self.name
 
 
+class TypeToRegistry(BaseTimeModel):
+    device_type_file = models.CharField(max_length=100)
+    numbers_registry = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "types_to_registry"
+
+    def __str__(self):
+        return f"{self.device_type_file} - ({self.numbers_registry})"
+
+
 class Device(BaseTimeModel):
     metering_unit = models.ForeignKey(
         MeteringUnit,
@@ -174,14 +185,14 @@ class Device(BaseTimeModel):
         null=True,
         blank=True,
     )
-    device_type = models.ForeignKey(
-        DeviceType,
+    mod = models.ForeignKey(
+        DeviceMod,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
     )
-    device_mod = models.ForeignKey(
-        DeviceMod,
+    type_of_file = models.ForeignKey(
+        TypeToRegistry,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -219,12 +230,4 @@ class DeviceVerification(BaseTimeModel):
         return f"{self.verification_date}"
 
 
-class TypeToRegistry(BaseTimeModel):
-    device_type_file = models.CharField(max_length=100)
-    numbers_registry = models.CharField(max_length=100)
 
-    class Meta:
-        verbose_name_plural = "types_to_registry"
-
-    def __str__(self):
-        return f"{self.device_type_file} - ({self.numbers_registry})"
