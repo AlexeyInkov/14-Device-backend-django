@@ -216,3 +216,8 @@ class DeviceVerification(BaseTimeModel):
 
     def __str__(self):
         return f"{self.verification_date}"
+
+
+class TypeToRegistry(BaseTimeModel):
+    device_type_file = models.CharField(max_length=100)
+    numbers_registry = models.CharField(max_length=100)
