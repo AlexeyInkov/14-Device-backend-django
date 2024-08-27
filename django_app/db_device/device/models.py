@@ -222,3 +222,9 @@ class DeviceVerification(BaseTimeModel):
 class TypeToRegistry(BaseTimeModel):
     device_type_file = models.CharField(max_length=100)
     numbers_registry = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "types_to_registry"
+
+    def __str__(self):
+        return f"{self.device_type_file} - ({self.numbers_registry})"
