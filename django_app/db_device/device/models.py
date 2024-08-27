@@ -40,7 +40,7 @@ class UserToOrganization(BaseTimeModel):
         verbose_name_plural = "users_to_organizations"
 
     def __str__(self):
-        return f"{self.user.name} ({self.organization.name})"
+        return f"{self.user.username} ({self.organization.name})"
 
 
 class Address(BaseTimeModel):
@@ -135,7 +135,7 @@ class DeviceType(BaseTimeModel):
 class DeviceMod(BaseTimeModel):
 
     mod = models.CharField(max_length=100)
-    type_devise = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
+    # type_devise = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "device_mods"
