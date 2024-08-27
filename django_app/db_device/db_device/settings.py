@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework_swagger",
     "rest_framework",
+    "drf_yasg",
     "corsheaders",
     "device",
 ]
@@ -162,6 +164,8 @@ KAFKA_URL = os.environ.get("KAFKA_URL")
 # CORS_ORIGIN_WHITELIST = ("http://localhost:8000",)
 
 CORS_ORIGIN_WHITELIST = [
-    "http://192.168.0.101:63342",
-    "http://localhost:63342",
+    "http://192.168.0.101:63343",
+    "http://localhost:63343",
+    "http://192.168.0.101:3000",
+    "http://localhost:3000",
 ]
