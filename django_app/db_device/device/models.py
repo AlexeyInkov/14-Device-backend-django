@@ -142,7 +142,7 @@ class DeviceInstallationPoint(BaseTimeModel):
 
 
 class TypeToRegistry(BaseTimeModel):
-    device_type_file = models.CharField(max_length=100)
+    device_type_file = models.CharField(max_length=100, unique=True)
     numbers_registry = models.CharField(max_length=100)
 
     class Meta:
