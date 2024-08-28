@@ -11,16 +11,6 @@ class BaseTimeModel(models.Model):
         abstract = True
 
 
-class TSOrganization(BaseTimeModel):
-    name = models.CharField(max_length=100)
-
-    class Meta:
-        verbose_name_plural = "ts_organizations"
-
-    def __str__(self):
-        return self.name
-
-
 class Organization(BaseTimeModel):
     name = models.CharField(max_length=100)
 
@@ -85,7 +75,7 @@ class MeteringUnit(BaseTimeModel):
         related_name="metering_units_service_organization",
     )
     tso = models.ForeignKey(
-        TSOrganization,
+        Organization,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
