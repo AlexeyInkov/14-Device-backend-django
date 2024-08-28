@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
-from django_app.db_device.device.models import (
+from .address import MeteringUnitSerializer
+from .drf import MySerializer
+from ..models import (
     DeviceInstallationPoint,
     DeviceRegistryNumber,
     DeviceType,
@@ -11,36 +13,65 @@ from django_app.db_device.device.models import (
 )
 
 
-class DeviceInstallationPointSerializer(serializers.ModelSerializer):
+class DeviceInstallationPointSerializer(MySerializer):
     class Meta:
         model = DeviceInstallationPoint
+        fields = "id", "name"
 
 
-class DeviceRegistryNumberSerializer(serializers.ModelSerializer):
+class DeviceRegistryNumberSerializer(MySerializer):
     class Meta:
         model = DeviceRegistryNumber
+        fields = "id", "registry_number"
 
 
-class DeviceTypeSerializer(serializers.ModelSerializer):
+class DeviceTypeSerializer(MySerializer):
     class Meta:
         model = DeviceType
+        fields = "id", "type"
 
 
-class DeviceModSerializer(serializers.ModelSerializer):
+class DeviceModSerializer(MySerializer):
     class Meta:
         model = DeviceMod
+        fields = "id", "mod"
 
 
-class DeviceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Device
+class DeviceVerificationSerializer(MySerializer):
+    organization = serializers.CharField(required=False)
 
-
-class DeviceVerificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeviceVerification
+        fields = "id", "organization", "verification_date", "valid_date", "is_actual"
 
 
-class TypeToRegistrySerializer(serializers.ModelSerializer):
+class TypeToRegistrySerializer(MySerializer):
+    numbers_registry = serializers.CharField(required=False)
+
     class Meta:
         model = TypeToRegistry
+        fields = "id", "device_type_file", "numbers_registry"
+
+
+class DeviceSerializer(MySerializer):
+    metering_unit = MeteringUnitSerializer()
+    installation_point = DeviceInstallationPointSerializer()
+    registry_number = DeviceRegistryNumberSerializer(required=False)
+    type = DeviceTypeSerializer(required=False)
+    mod = DeviceModSerializer(required=False)
+    type_to_fields = TypeToRegistrySerializer()
+    nodes = serializers.CharField(required=False)
+
+    class Meta:
+        model = Device
+        fields = (
+            "id",
+            "metering_unit",
+            "installation_point",
+            "registry_number",
+            "type",
+            "mod",
+            "type_to_file",
+            "factory_number",
+            "nodes",
+        )

@@ -2,13 +2,17 @@ from rest_framework import serializers
 
 from ..models import (
     MeteringUnit,
-    TSOrganization,
+    Organization,
     Device,
     DeviceVerification,
 )
 
 
-class CustomerSerializer(serializers.Serializer):
+class MySerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+
+class MenuCustomerSerializer(MySerializer):
     id = serializers.CharField(source="customer__id", read_only=True)
     name = serializers.CharField(source="customer__name", read_only=True)
 
@@ -20,7 +24,7 @@ class CustomerSerializer(serializers.Serializer):
         )
 
 
-class MenuSerializer(serializers.ModelSerializer):
+class MenuSerializer(MySerializer):
     customers = serializers.SerializerMethodField()
 
     def get_customers(self, obj):
@@ -29,11 +33,11 @@ class MenuSerializer(serializers.ModelSerializer):
             .values("customer__id", "customer__name")
             .distinct()
         )
-        serializer = CustomerSerializer(instance=qs, many=True)
+        serializer = MenuCustomerSerializer(instance=qs, many=True)
         return serializer.data
 
     class Meta:
-        model = TSOrganization
+        model = Organization
         fields = (
             "id",
             "name",
@@ -41,7 +45,7 @@ class MenuSerializer(serializers.ModelSerializer):
         )
 
 
-class AddressSerializer(serializers.ModelSerializer):
+class AddressesSerializer(MySerializer):
     customer = serializers.CharField(source="customer.name", read_only=True)
     service_organization = serializers.CharField(
         source="service_organization.name", read_only=True
@@ -57,6 +61,7 @@ class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = MeteringUnit
         fields = (
+            "id",
             "customer",
             "service_organization",
             "tso",
@@ -69,26 +74,26 @@ class AddressSerializer(serializers.ModelSerializer):
         )
 
 
-class DeviceVerificationSerializer(serializers.ModelSerializer):
+class ShortDeviceVerificationSerializer(MySerializer):
     class Meta:
         model = DeviceVerification
         fields = (
-            "verification_date",
+            "id",
             "valid_date",
         )
 
 
-class DeviceSerializer(serializers.ModelSerializer):
+class ShortDeviceSerializer(MySerializer):
     installation_point = serializers.CharField(
         source="installation_point.name", read_only=True
     )
-    registry_number = serializers.CharField(
-        source="registry_number.registry_number", read_only=True
+
+    type_of_file = serializers.CharField(
+        source="type_of_file.device_type_file", read_only=True
     )
-    type = serializers.CharField(source="type_of_file.device_type_file", read_only=True)
-    mod = serializers.CharField(source="mod.mod", read_only=True)
+
     factory_number = serializers.CharField(read_only=True)
-    verification = DeviceVerificationSerializer(
+    verification = ShortDeviceVerificationSerializer(
         source="filtered_verifications",
         many=True,
         read_only=True,
@@ -97,10 +102,10 @@ class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
         fields = (
+            "id",
             "installation_point",
-            "registry_number",
-            "type",
-            "mod",
+            "type_of_file",
             "factory_number",
             "verification",
+            "nodes",
         )

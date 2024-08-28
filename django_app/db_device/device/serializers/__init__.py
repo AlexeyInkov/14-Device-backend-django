@@ -1,8 +1,23 @@
 from .drf import (
-    DeviceSerializer,
-    DeviceVerificationSerializer,
-    CustomerSerializer,
     MenuSerializer,
+    MenuCustomerSerializer,
+    AddressesSerializer,
+    ShortDeviceSerializer,
+    ShortDeviceVerificationSerializer,
+)
+from .device import (
+    DeviceSerializer,
+    DeviceInstallationPointSerializer,
+    DeviceRegistryNumberSerializer,
+    DeviceTypeSerializer,
+    DeviceModSerializer,
+    TypeToRegistrySerializer,
+    DeviceVerificationSerializer,
+)
+
+from .address import (
     AddressSerializer,
-    TSOrganization,
+    OrganizationSerializer,
+    UserToOrganizationSerializer,
+    MeteringUnitSerializer,
 )
