@@ -87,14 +87,14 @@ class MeteringUnit(BaseTimeModel):
         null=True,
         related_name="metering_units_address",
     )
-    ITP = models.CharField(max_length=10, null=True, blank=True)
+    itp = models.CharField(max_length=10, null=True, blank=True)
     totem_number = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "metering_units"
 
     def __str__(self):
-        return f"{self.address} {self.ITP}"
+        return f"{self.address} {self.itp}"
 
 
 class DeviceRegistryNumber(BaseTimeModel):
