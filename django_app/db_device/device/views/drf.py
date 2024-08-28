@@ -1,3 +1,5 @@
+from tkinter import Menu
+
 from django.db.models import Prefetch
 from rest_framework.generics import ListAPIView
 
@@ -11,13 +13,9 @@ from ..serializers import MenuSerializer, AddressesSerializer, ShortDeviceSerial
 
 
 class MenuListAPIView(ListAPIView):
-    queryset = Organization.objects.prefetch_related("metering_units_tso")
-    #     Prefetch(
-    #         ,
-    #         queryset=MeteringUnit.objects.all(),
-    #         to_attr="filtered_metering_units_tso",
-    #     )
-    # )
+    queryset = Organization.objects.prefetch_related("metering_units_tso").filter(
+        pk__in=MeteringUnit.objects.values_list("tso", flat=True)
+    )
     serializer_class = MenuSerializer
 
 
@@ -50,7 +48,9 @@ class DeviceListAPIView(ListAPIView):
             .prefetch_related(  # "verifications")
                 Prefetch(
                     "verifications",
-                    queryset=DeviceVerification.objects.filter(is_actual=True),
+                    queryset=DeviceVerification.objects.filter(
+                        is_actual=True, is_delete=False
+                    ),
                     to_attr="filtered_verifications",
                 )
             )

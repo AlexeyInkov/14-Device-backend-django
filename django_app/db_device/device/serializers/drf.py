@@ -56,7 +56,7 @@ class AddressesSerializer(MySerializer):
     house_number = serializers.CharField(source="address.house_number", read_only=True)
     corp = serializers.CharField(source="address.corp", read_only=True)
     liter = serializers.CharField(source="address.liter", read_only=True)
-    ITP = serializers.CharField(source="address.ITP", read_only=True)
+    itp = serializers.CharField(read_only=True)
 
     class Meta:
         model = MeteringUnit
@@ -70,7 +70,7 @@ class AddressesSerializer(MySerializer):
             "house_number",
             "corp",
             "liter",
-            "ITP",
+            "itp",
         )
 
 
@@ -98,6 +98,7 @@ class ShortDeviceSerializer(MySerializer):
         many=True,
         read_only=True,
     )
+    nodes = serializers.CharField(read_only=True)
 
     class Meta:
         model = Device
