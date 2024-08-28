@@ -11,7 +11,7 @@ from device.models import (
     DeviceVerification,
 )
 from device.serializers import (
-    ShortDeviceSerializer,
+    DeviceSerializer,
     DeviceInstallationPointSerializer,
     DeviceRegistryNumberSerializer,
     DeviceTypeSerializer,
@@ -23,7 +23,7 @@ from device.serializers import (
 
 class DeviceViewSet(ModelViewSet):
     queryset = Device.objects.all()
-    serializer_class = ShortDeviceSerializer
+    serializer_class = DeviceSerializer
     permission_classes = []
 
 

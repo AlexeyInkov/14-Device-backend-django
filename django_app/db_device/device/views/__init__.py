@@ -6,11 +6,11 @@
 #     OrganizationUpdateView,
 #     OrganizationDeleteView,
 # )
-# from .device import (
-#     MeteringUnitCreateView,
-#     MeteringUnitDetailView,
-#     MeteringUnitListView,
-#     MeteringUnitUpdateView,
-#     MeteringUnitDeleteView,
-# )
+from .device import (
+    TypeToRegistryViewSet,
+    #     MeteringUnitDetailView,
+    #     MeteringUnitListView,
+    #     MeteringUnitUpdateView,
+    #     MeteringUnitDeleteView,
+)
 from .drf import MenuListAPIView, AddressListAPIView, DeviceListAPIView

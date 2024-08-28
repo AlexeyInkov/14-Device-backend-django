@@ -15,14 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from .views import MenuListAPIView, AddressListAPIView, DeviceListAPIView
+from .views import TypeToRegistryViewSet
 
 app_name = "device"
+
+router = routers.DefaultRouter()
+router.register(r"type_to_registry", TypeToRegistryViewSet, basename="type_to_registry")
 
 urlpatterns = [
     path("menu/", MenuListAPIView.as_view(), name="menu"),
     path("addresses/", AddressListAPIView.as_view(), name="addresses"),
     path("devices/", DeviceListAPIView.as_view(), name="devices"),
+    path("", include(router.urls)),
 ]
