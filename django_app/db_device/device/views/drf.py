@@ -2,16 +2,16 @@ from django.db.models import Prefetch
 from rest_framework.generics import ListAPIView
 
 from ..models import (
-    TSOrganization,
     MeteringUnit,
     Device,
     DeviceVerification,
+    Organization,
 )
-from ..serializers import MenuSerializer, AddressSerializer, DeviceSerializer
+from ..serializers import MenuSerializer, AddressesSerializer, ShortDeviceSerializer
 
 
 class MenuListAPIView(ListAPIView):
-    queryset = TSOrganization.objects.prefetch_related("metering_units_tso")
+    queryset = Organization.objects.prefetch_related("metering_units_tso")
     #     Prefetch(
     #         ,
     #         queryset=MeteringUnit.objects.all(),
@@ -22,7 +22,7 @@ class MenuListAPIView(ListAPIView):
 
 
 class AddressListAPIView(ListAPIView):
-    serializer_class = AddressSerializer
+    serializer_class = AddressesSerializer
 
     def get_queryset(self):
         queryset = (
@@ -37,7 +37,7 @@ class AddressListAPIView(ListAPIView):
 
 
 class DeviceListAPIView(ListAPIView):
-    serializer_class = DeviceSerializer
+    serializer_class = ShortDeviceSerializer
 
     def get_queryset(self):
         queryset = (
