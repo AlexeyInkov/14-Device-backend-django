@@ -39,10 +39,17 @@ class DeviceModSerializer(MySerializer):
 
 class DeviceVerificationSerializer(MySerializer):
     organization = serializers.CharField(required=False)
+    verification_date = serializers.DateField(required=False)
 
     class Meta:
         model = DeviceVerification
-        fields = "id", "organization", "verification_date", "valid_date", "is_actual"
+        fields = (
+            "id",
+            "organization",
+            "verification_date",
+            "valid_date",
+            "is_actual",
+        )
 
 
 class TypeToRegistrySerializer(MySerializer):

@@ -22,8 +22,18 @@ class Organization(BaseTimeModel):
 
 
 class UserToOrganization(BaseTimeModel):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="user_to_org",
+    )
+    organization = models.ForeignKey(
+        Organization,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="user_to_org",
+    )
     actual = models.BooleanField(default=True)
 
     class Meta:
@@ -64,28 +74,26 @@ class MeteringUnit(BaseTimeModel):
         Organization,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
-        related_name="metering_units_customer",
+        related_name="mu_c",
     )
     service_organization = models.ForeignKey(
         Organization,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name="metering_units_service_organization",
+        related_name="mu_so",
     )
     tso = models.ForeignKey(
         Organization,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
-        related_name="metering_units_tso",
+        related_name="mu_tso",
     )
     address = models.ForeignKey(
         Address,
         on_delete=models.SET_NULL,
         null=True,
-        related_name="metering_units_address",
+        related_name="mu_address",
     )
     itp = models.CharField(max_length=10, null=True, blank=True)
     totem_number = models.CharField(max_length=100, null=True, blank=True)
@@ -99,7 +107,7 @@ class MeteringUnit(BaseTimeModel):
 
 class DeviceRegistryNumber(BaseTimeModel):
 
-    registry_number = models.IntegerField()
+    registry_number = models.CharField(unique=True, max_length=10)
 
     class Meta:
         verbose_name_plural = "device_registry_numbers"
@@ -110,7 +118,7 @@ class DeviceRegistryNumber(BaseTimeModel):
 
 class DeviceType(BaseTimeModel):
 
-    type = models.CharField(max_length=100)
+    type = models.CharField(max_length=100, unique=True)
 
     class Meta:
         verbose_name_plural = "device_types"
@@ -121,7 +129,7 @@ class DeviceType(BaseTimeModel):
 
 class DeviceMod(BaseTimeModel):
 
-    mod = models.CharField(max_length=100)
+    mod = models.CharField(max_length=100, unique=True)
 
     class Meta:
         verbose_name_plural = "device_mods"
@@ -132,7 +140,7 @@ class DeviceMod(BaseTimeModel):
 
 class DeviceInstallationPoint(BaseTimeModel):
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     class Meta:
         verbose_name_plural = "device_installation_points"
@@ -157,39 +165,42 @@ class Device(BaseTimeModel):
         MeteringUnit,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
+        related_name="device",
     )
     installation_point = models.ForeignKey(
         DeviceInstallationPoint,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
+        related_name="device",
     )
     registry_number = models.ForeignKey(
         DeviceRegistryNumber,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        related_name="device",
     )
     type = models.ForeignKey(
         DeviceType,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        related_name="device",
     )
     mod = models.ForeignKey(
         DeviceMod,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
+        related_name="device",
     )
     type_of_file = models.ForeignKey(
         TypeToRegistry,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
+        related_name="device",
     )
-    factory_number = models.CharField(max_length=100)
+    factory_number = models.CharField(max_length=100, unique=True)
 
     notes = models.CharField(
         max_length=100,
@@ -201,16 +212,19 @@ class Device(BaseTimeModel):
         verbose_name_plural = "devices"
 
     def __str__(self):
-        return f"{str(self.device_mod)} №{self.factory_number}"
+        return f"{str(self.mod)} №{self.factory_number}"
 
 
 class DeviceVerification(BaseTimeModel):
 
-    device_id = models.ForeignKey(
-        Device, on_delete=models.SET_NULL, null=True, related_name="verifications"
+    device = models.ForeignKey(
+        Device,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="verifications",
     )
     organization = models.CharField(max_length=100, blank=True, null=True)
-    verification_date = models.DateField(default="1900-01-01")
+    verification_date = models.DateField()
     valid_date = models.DateField(default="1900-01-01")
     is_actual = models.BooleanField(default=False)
     is_delete = models.BooleanField(default=False)
