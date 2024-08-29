@@ -13,7 +13,7 @@ from ..serializers import MenuSerializer, AddressesSerializer, ShortDeviceSerial
 
 
 class MenuListAPIView(ListAPIView):
-    queryset = Organization.objects.prefetch_related("metering_units_tso").filter(
+    queryset = Organization.objects.prefetch_related("mu_tso").filter(
         pk__in=MeteringUnit.objects.values_list("tso", flat=True)
     )
     serializer_class = MenuSerializer
