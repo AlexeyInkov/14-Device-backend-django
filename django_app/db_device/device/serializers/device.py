@@ -37,21 +37,6 @@ class DeviceModSerializer(MySerializer):
         fields = "id", "mod"
 
 
-class DeviceVerificationSerializer(MySerializer):
-    organization = serializers.CharField(required=False)
-    verification_date = serializers.DateField(required=False)
-
-    class Meta:
-        model = DeviceVerification
-        fields = (
-            "id",
-            "organization",
-            "verification_date",
-            "valid_date",
-            "is_actual",
-        )
-
-
 class TypeToRegistrySerializer(MySerializer):
     numbers_registry = serializers.CharField(required=False)
 
@@ -81,4 +66,21 @@ class DeviceSerializer(MySerializer):
             "type_to_file",
             "factory_number",
             "nodes",
+        )
+
+
+class DeviceVerificationSerializer(MySerializer):
+    # device = DeviceSerializer()
+    organization = serializers.CharField(required=False)
+    verification_date = serializers.DateField(required=False)
+
+    class Meta:
+        model = DeviceVerification
+        fields = (
+            "id",
+            "device",
+            "organization",
+            "verification_date",
+            "valid_date",
+            "is_actual",
         )

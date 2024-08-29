@@ -17,7 +17,7 @@ from device.serializers import (
     # DeviceTypeSerializer,
     # DeviceModSerializer,
     TypeToRegistrySerializer,
-    ShortDeviceVerificationSerializer,
+    DeviceVerificationSerializer,
 )
 
 
@@ -59,5 +59,5 @@ class TypeToRegistryViewSet(CreateModelViewSetMixin, ModelViewSet):
 
 class DeviceVerificationViewSet(CreateModelViewSetMixin, ModelViewSet):
     queryset = DeviceVerification.objects.all()
-    serializer_class = ShortDeviceVerificationSerializer
+    serializer_class = DeviceVerificationSerializer
     permission_classes = []
