@@ -1,5 +1,3 @@
-from tkinter import Menu
-
 from django.contrib.auth.models import User
 from django.db.models import Prefetch
 from rest_framework.generics import ListAPIView
@@ -9,13 +7,12 @@ from ..models import (
     Device,
     DeviceVerification,
     Organization,
-    UserToOrganization,
 )
 from ..serializers import (
     MenuSerializer,
     AddressesSerializer,
     ShortDeviceSerializer,
-    UserToOrganizationSerializer,
+    UserOrganizationSerializer,
 )
 
 
@@ -70,9 +67,10 @@ class DeviceListAPIView(ListAPIView):
 
 
 class OrganizationListAPIView(ListAPIView):
-    serializer_class = UserToOrganizationSerializer
+    serializer_class = UserOrganizationSerializer
 
     def get_queryset(self):
-        return User.objects.prefetch_related("user_to_org__organization").filter(
-            user=self.request.user
-        )
+        queryset = User.objects.prefetch_related("user_to_org__organization")
+        if self.request.user.is_authenticated:
+            return queryset.filter(user_to_org=self.request.user.pk)
+        return None
