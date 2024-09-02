@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from .address import MeteringUnitSerializer
-from .drf import MySerializer
+from .baseserializers import MySerializer
 from ..models import (
     DeviceInstallationPoint,
     DeviceRegistryNumber,

@@ -1,4 +1,4 @@
-from .drf import MySerializer
+from .baseserializers import MySerializer
 from ..models import (
     UserToOrganization,
     Organization,
