@@ -7,6 +7,14 @@
 #     OrganizationDeleteView,
 # )
 
-from .device import TypeToRegistryViewSet, DeviceVerificationViewSet
+from .device import (
+    TypeToRegistryViewSet,
+    DeviceVerificationViewSet,
+)
 
-from .drf import MenuListAPIView, AddressListAPIView, DeviceListAPIView
+from .drf import (
+    MenuListAPIView,
+    AddressListAPIView,
+    DeviceListAPIView,
+    OrganizationListAPIView,
+)
