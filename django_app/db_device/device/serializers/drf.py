@@ -1,15 +1,14 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
+from .address import OrganizationSerializer
+from .baseserializers import MySerializer
 from ..models import (
     MeteringUnit,
     Organization,
     Device,
     DeviceVerification,
 )
-
-
-class MySerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
 
 
 class MenuCustomerSerializer(MySerializer):
@@ -109,4 +108,21 @@ class ShortDeviceSerializer(MySerializer):
             "factory_number",
             "verification",
             "nodes",
+        )
+
+
+class UserOrganizationSerializer(MySerializer):
+    organizations = serializers.SerializerMethodField()
+
+    def get_organizations(self, obj):
+        qs = Organization.objects.filter(user_to_org__user=obj.id).values("id", "name")
+        serializer = OrganizationSerializer(instance=qs, many=True)
+        return serializer.data
+
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "username",
+            "organizations",
         )

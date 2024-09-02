@@ -4,6 +4,7 @@ from .drf import (
     AddressesSerializer,
     ShortDeviceSerializer,
     ShortDeviceVerificationSerializer,
+    UserOrganizationSerializer,
 )
 from .device import (
     DeviceSerializer,
