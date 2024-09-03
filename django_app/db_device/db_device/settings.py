@@ -33,7 +33,6 @@ DEBUG = debug == "True"
 
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "0.0.0.0").split(",")
-print(ALLOWED_HOSTS)
 
 # Application definition
 
@@ -46,9 +45,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework_swagger",
     "rest_framework",
+    "rest_framework.authtoken",
     "drf_yasg",
     "corsheaders",
-    "device",
+    "account.apps.AccountConfig",
+    "device.apps.DeviceConfig",
 ]
 
 MIDDLEWARE = [
@@ -143,6 +144,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "static/"
 STATICFILES_DIRS = [
@@ -152,20 +155,28 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-KAFKA_URL = os.environ.get("KAFKA_URL")
-
 # CORS_ORIGIN_ALLOW_ALL = False
 #
 # CORS_ORIGIN_WHITELIST = ("http://localhost:8000",)
-
 CORS_ORIGIN_WHITELIST = [
     "http://192.168.0.101:63343",
     "http://localhost:63343",
     "http://192.168.0.101:3000",
     "http://localhost:3000",
 ]
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
+
+# LOGIN_REDIRECT_URL = "/"
+# LOGOUT_REDIRECT_URL = "/"
+
+KAFKA_URL = os.environ.get("KAFKA_URL")
