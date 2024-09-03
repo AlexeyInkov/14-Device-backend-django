@@ -40,13 +40,12 @@ def user_login(request):
 
         if user:
             token, _ = Token.objects.get_or_create(user=user)
+            queryset = Organization.objects.prefetch_related("user_to_org").filter(user_to_org__user=user.id)
             data = {
                 "id": user.id,
                 "username": user.username,
                 "token": token.key,
-                "organizations": OrganizationSerializer(
-                    Organization.objects.filter(user_to_org__user=user.id), many=True
-                ).data,
+                "organizations": OrganizationSerializer(queryset, many=True).data,
             }
             return Response(data, status=status.HTTP_200_OK)
 
