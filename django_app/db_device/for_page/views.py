@@ -2,13 +2,13 @@ from django.contrib.auth.models import User
 from django.db.models import Prefetch
 from rest_framework.generics import ListAPIView
 
-from ..models import (
+from device.models import (
     MeteringUnit,
     Device,
     DeviceVerification,
     Organization,
 )
-from ..serializers import (
+from .serializers import (
     MenuSerializer,
     AddressesSerializer,
     ShortDeviceSerializer,

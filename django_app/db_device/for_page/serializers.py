@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .address import OrganizationSerializer
-from .baseserializers import MySerializer
-from ..models import (
+from metering_unit.address import OrganizationSerializer
+from device.baseserializers import MySerializer
+from device.models import (
     MeteringUnit,
     Organization,
     Device,

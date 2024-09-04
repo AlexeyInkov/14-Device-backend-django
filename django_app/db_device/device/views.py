@@ -1,7 +1,8 @@
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.viewsets import ModelViewSet
 
-from ..mixins.create_model_viewset import CreateModelViewSetMixin
-from ..models import (
+from device.mixins import CreateModelViewSetMixin
+from device.models import (
     # Device,
     # DeviceInstallationPoint,
     # DeviceRegistryNumber,
@@ -54,7 +55,7 @@ from device.serializers import (
 class TypeToRegistryViewSet(CreateModelViewSetMixin, ModelViewSet):
     queryset = TypeToRegistry.objects.all()
     serializer_class = TypeToRegistrySerializer
-    permission_classes = []
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
 
 class DeviceVerificationViewSet(CreateModelViewSetMixin, ModelViewSet):

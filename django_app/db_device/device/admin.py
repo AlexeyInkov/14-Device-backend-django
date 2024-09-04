@@ -1,10 +1,6 @@
 from django.contrib import admin
 
 from .models import (
-    UserToOrganization,
-    Organization,
-    Address,
-    MeteringUnit,
     DeviceInstallationPoint,
     DeviceRegistryNumber,
     DeviceType,
@@ -15,10 +11,6 @@ from .models import (
 )
 
 
-admin.site.register(UserToOrganization)
-admin.site.register(Organization)
-admin.site.register(Address)
-admin.site.register(MeteringUnit)
 admin.site.register(DeviceInstallationPoint)
 admin.site.register(DeviceRegistryNumber)
 admin.site.register(DeviceType)

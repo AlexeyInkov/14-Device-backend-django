@@ -1,8 +1,7 @@
 from rest_framework import serializers
 
-from .address import MeteringUnitSerializer
 from .baseserializers import MySerializer
-from ..models import (
+from device.models import (
     DeviceInstallationPoint,
     DeviceRegistryNumber,
     DeviceType,
@@ -46,7 +45,6 @@ class TypeToRegistrySerializer(MySerializer):
 
 
 class DeviceSerializer(MySerializer):
-    metering_unit = MeteringUnitSerializer()
     installation_point = DeviceInstallationPointSerializer()
     registry_number = DeviceRegistryNumberSerializer(required=False)
     type = DeviceTypeSerializer(required=False)

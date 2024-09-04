@@ -24,8 +24,9 @@ urlpatterns = (
             schema_view.with_ui("swagger", cache_timeout=0),
             name="schema-swagger-ui",
         ),
-        path("auth/", include("account.urls")),
-        path("api/", include("device.urls")),
+        path("auth/", include("my_auth.urls")),
+        path("api/metering_unit/", include("metering_unit.urls")),
+        path("api/device/", include("device.urls")),
     ]
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

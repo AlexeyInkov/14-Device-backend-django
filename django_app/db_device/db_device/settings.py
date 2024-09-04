@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "drf_yasg",
     "corsheaders",
-    "account.apps.AccountConfig",
+    "my_auth.apps.MyAuthConfig",
+    "for_page.apps.ForPageConfig",
+    "metering_unit.apps.MeteringUnitConfig",
     "device.apps.DeviceConfig",
 ]
 
