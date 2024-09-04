@@ -1,5 +1,5 @@
-from device.baseserializers import MySerializer
-from metering_unit.models import (
+from .baseserializers import MySerializer
+from .models import (
     UserToOrganization,
     Organization,
     Address,
