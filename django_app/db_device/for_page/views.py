@@ -1,18 +1,21 @@
 from django.contrib.auth.models import User
 from django.db.models import Prefetch
 from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from device.models import (
-    MeteringUnit,
     Device,
     DeviceVerification,
+)
+from metering_unit.models import (
+    MeteringUnit,
     Organization,
 )
 from .serializers import (
     MenuSerializer,
     AddressesSerializer,
     ShortDeviceSerializer,
-    UserOrganizationSerializer,
+    # UserOrganizationSerializer,
 )
 
 
@@ -21,10 +24,12 @@ class MenuListAPIView(ListAPIView):
         pk__in=MeteringUnit.objects.values_list("tso", flat=True)
     )
     serializer_class = MenuSerializer
+    permission_classes = (IsAuthenticated,)
 
 
 class AddressListAPIView(ListAPIView):
     serializer_class = AddressesSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         queryset = (
@@ -40,6 +45,7 @@ class AddressListAPIView(ListAPIView):
 
 class DeviceListAPIView(ListAPIView):
     serializer_class = ShortDeviceSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         queryset = (
@@ -66,11 +72,11 @@ class DeviceListAPIView(ListAPIView):
         )
 
 
-class OrganizationListAPIView(ListAPIView):
-    serializer_class = UserOrganizationSerializer
-
-    def get_queryset(self):
-        queryset = User.objects.prefetch_related("user_to_org__organization")
-        if self.request.user.is_authenticated:
-            return queryset.filter(user_to_org=self.request.user.pk)
-        return None
+# class OrganizationListAPIView(ListAPIView):
+#     serializer_class = UserOrganizationSerializer
+#
+#     def get_queryset(self):
+#         queryset = User.objects.prefetch_related("user_to_org__organization")
+#         if self.request.user.is_authenticated:
+#             return queryset.filter(user_to_org=self.request.user.pk)
+#         return None
