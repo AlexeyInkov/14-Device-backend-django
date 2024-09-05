@@ -45,11 +45,10 @@ class TypeToRegistrySerializer(MySerializer):
 
 
 class DeviceSerializer(MySerializer):
-    installation_point = DeviceInstallationPointSerializer()
+
     registry_number = DeviceRegistryNumberSerializer(required=False)
     type = DeviceTypeSerializer(required=False)
     mod = DeviceModSerializer(required=False)
-    type_to_fields = TypeToRegistrySerializer()
     nodes = serializers.CharField(required=False)
 
     class Meta:
@@ -61,7 +60,7 @@ class DeviceSerializer(MySerializer):
             "registry_number",
             "type",
             "mod",
-            "type_to_file",
+            "type_of_file",
             "factory_number",
             "nodes",
         )

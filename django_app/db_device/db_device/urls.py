@@ -27,6 +27,7 @@ urlpatterns = (
             name="schema-swagger-ui",
         ),
         path("auth/", include("my_auth.urls")),
+        path("api/page/", include("for_page.urls")),
         path("api/metering_unit/", include("metering_unit.urls")),
         path("api/device/", include("device.urls")),
     ]
