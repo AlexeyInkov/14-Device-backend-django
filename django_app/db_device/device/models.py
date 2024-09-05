@@ -119,7 +119,7 @@ class Device(BaseTimeModel):
         verbose_name_plural = "devices"
 
     def __str__(self):
-        return f"{str(self.mod)} №{self.factory_number}"
+        return f"{str(self.type_of_file)} №{self.factory_number}"
 
 
 class DeviceVerification(BaseTimeModel):
@@ -131,7 +131,7 @@ class DeviceVerification(BaseTimeModel):
         related_name="verifications",
     )
     organization = models.CharField(max_length=100, blank=True, null=True)
-    verification_date = models.DateField()
+    verification_date = models.DateField(default="1900-01-01")
     valid_date = models.DateField(default="1900-01-01")
     is_actual = models.BooleanField(default=False)
     is_delete = models.BooleanField(default=False)
@@ -140,4 +140,4 @@ class DeviceVerification(BaseTimeModel):
         verbose_name_plural = "device_verifications"
 
     def __str__(self):
-        return f"{self.verification_date}"
+        return f"{self.valid_date}"
