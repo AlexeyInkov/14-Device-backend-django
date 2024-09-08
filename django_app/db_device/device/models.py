@@ -70,40 +70,40 @@ class TypeToRegistry(BaseTimeModel):
 class Device(BaseTimeModel):
     metering_unit = models.ForeignKey(
         MeteringUnit,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         related_name="device",
     )
     installation_point = models.ForeignKey(
         DeviceInstallationPoint,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         related_name="device",
     )
     registry_number = models.ForeignKey(
         DeviceRegistryNumber,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         related_name="device",
     )
     type = models.ForeignKey(
         DeviceType,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         related_name="device",
     )
     mod = models.ForeignKey(
         DeviceMod,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         related_name="device",
     )
     type_of_file = models.ForeignKey(
         TypeToRegistry,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         related_name="device",
     )
@@ -126,7 +126,7 @@ class DeviceVerification(BaseTimeModel):
 
     device = models.ForeignKey(
         Device,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         related_name="verifications",
     )

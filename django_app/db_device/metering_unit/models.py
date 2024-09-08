@@ -11,7 +11,7 @@ class BaseTimeModel(models.Model):
 
 
 class Organization(BaseTimeModel):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     class Meta:
         verbose_name_plural = "organizations"
@@ -23,13 +23,13 @@ class Organization(BaseTimeModel):
 class UserToOrganization(BaseTimeModel):
     user = models.ForeignKey(
         User,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         related_name="user_to_org",
     )
     organization = models.ForeignKey(
         Organization,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         related_name="user_to_org",
     )
@@ -43,11 +43,11 @@ class UserToOrganization(BaseTimeModel):
 
 
 class Address(BaseTimeModel):
-    city = models.CharField(max_length=100, null=True, blank=True)
-    street = models.CharField(max_length=100, null=True, blank=True)
-    house_number = models.CharField(max_length=100, null=True, blank=True)
-    corp = models.CharField(max_length=100, null=True, blank=True)
-    liter = models.CharField(max_length=100, null=True, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    street = models.CharField(max_length=100, blank=True)
+    house_number = models.CharField(max_length=100, blank=True)
+    corp = models.CharField(max_length=100, blank=True)
+    liter = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name_plural = "addresses"
@@ -71,31 +71,28 @@ class MeteringUnit(BaseTimeModel):
 
     customer = models.ForeignKey(
         Organization,
-        on_delete=models.SET_NULL,
-        null=True,
+        on_delete=models.PROTECT,
         related_name="mu_c",
     )
     service_organization = models.ForeignKey(
         Organization,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         related_name="mu_so",
     )
     tso = models.ForeignKey(
         Organization,
-        on_delete=models.SET_NULL,
-        null=True,
+        on_delete=models.PROTECT,
         related_name="mu_tso",
     )
     address = models.ForeignKey(
         Address,
-        on_delete=models.SET_NULL,
-        null=True,
+        on_delete=models.PROTECT,
         related_name="mu_address",
     )
-    itp = models.CharField(max_length=10, null=True, blank=True)
-    totem_number = models.CharField(max_length=100, null=True, blank=True)
+    itp = models.CharField(max_length=10, blank=True)
+    totem_number = models.CharField(max_length=100, blank=True)
 
     class Meta:
         verbose_name_plural = "metering_units"
