@@ -42,9 +42,36 @@ class UserToOrganization(BaseTimeModel):
         return f"{self.user.username} ({self.organization.name})"
 
 
+class Region(BaseTimeModel):
+    name = models.CharField(max_length=100)
+    parent_region = models.ForeignKey(
+        "self", on_delete=models.PROTECT, null=True, blank=True
+    )
+
+
+class TypeStreet(BaseTimeModel):
+    name = models.CharField(max_length=10, unique=True)
+    fullname = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Street(BaseTimeModel):
+    name = models.CharField(max_length=100, unique=True)
+    type_street = models.ForeignKey(TypeStreet, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f"{self.type_street} {self.name}"
+
+
 class Address(BaseTimeModel):
     city = models.CharField(max_length=100, blank=True)
+    region = models.ForeignKey(Region, on_delete=models.PROTECT, null=True, blank=True)
     street = models.CharField(max_length=100, blank=True)
+    street_new = models.ForeignKey(
+        Street, on_delete=models.PROTECT, null=True, blank=True
+    )
     house_number = models.CharField(max_length=100, blank=True)
     corp = models.CharField(max_length=100, blank=True)
     liter = models.CharField(max_length=100, blank=True)
