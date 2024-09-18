@@ -75,6 +75,8 @@ class Address(BaseTimeModel):
     house_number = models.CharField(max_length=100, blank=True)
     corp = models.CharField(max_length=100, blank=True)
     liter = models.CharField(max_length=100, blank=True)
+    longitude = models.FloatField(default=30)
+    latitude = models.FloatField(default=60)
 
     class Meta:
         verbose_name_plural = "addresses"
@@ -84,11 +86,14 @@ class Address(BaseTimeModel):
             map(
                 str,
                 (
+                    self.region,
                     self.city,
                     self.street,
+                    self.street_new,
                     self.house_number,
                     self.corp,
                     self.liter,
+                    f"({self.latitude}, {self.longitude})",
                 ),
             )
         )
