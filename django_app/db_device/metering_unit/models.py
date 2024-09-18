@@ -48,6 +48,11 @@ class Region(BaseTimeModel):
         "self", on_delete=models.PROTECT, null=True, blank=True
     )
 
+    def __str__(self):
+        if self.parent_region:
+            return f"{self.parent_region}, {self.name}"
+        return f"{self.name}"
+
 
 class TypeStreet(BaseTimeModel):
     name = models.CharField(max_length=10, unique=True)
@@ -66,7 +71,6 @@ class Street(BaseTimeModel):
 
 
 class Address(BaseTimeModel):
-    city = models.CharField(max_length=100, blank=True)
     region = models.ForeignKey(Region, on_delete=models.PROTECT, null=True, blank=True)
     street = models.CharField(max_length=100, blank=True)
     street_new = models.ForeignKey(
@@ -75,28 +79,26 @@ class Address(BaseTimeModel):
     house_number = models.CharField(max_length=100, blank=True)
     corp = models.CharField(max_length=100, blank=True)
     liter = models.CharField(max_length=100, blank=True)
-    longitude = models.FloatField(default=30)
     latitude = models.FloatField(default=60)
+    longitude = models.FloatField(default=30)
 
     class Meta:
         verbose_name_plural = "addresses"
 
     def __str__(self):
-        return ",".join(
-            map(
-                str,
-                (
-                    self.region,
-                    self.city,
-                    self.street,
-                    self.street_new,
-                    self.house_number,
-                    self.corp,
-                    self.liter,
-                    f"({self.latitude}, {self.longitude})",
-                ),
-            )
-        )
+        adres = []
+        if self.region:
+            adres.append(str(self.region))
+        if self.street_new:
+            adres.append(str(self.street_new))
+        if self.house_number:
+            adres.append(f"д. {str(self.house_number)}")
+        if self.corp:
+            adres.append(f"корп. {str(self.corp)}")
+        if self.liter:
+            adres.append(f"лит {str(self.liter)}")
+        adres.append(f"({self.latitude}, {self.longitude})"),
+        return ", ".join(adres)
 
 
 class MeteringUnit(BaseTimeModel):
