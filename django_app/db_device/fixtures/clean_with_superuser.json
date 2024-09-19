@@ -435,251 +435,359 @@
     "model": "auth.permission",
     "pk": 49,
     "fields": {
-        "name": "Can add device installation point",
+        "name": "Can add street",
         "content_type": 13,
-        "codename": "add_deviceinstallationpoint"
+        "codename": "add_street"
     }
 },
 {
     "model": "auth.permission",
     "pk": 50,
     "fields": {
-        "name": "Can change device installation point",
+        "name": "Can change street",
         "content_type": 13,
-        "codename": "change_deviceinstallationpoint"
+        "codename": "change_street"
     }
 },
 {
     "model": "auth.permission",
     "pk": 51,
     "fields": {
-        "name": "Can delete device installation point",
+        "name": "Can delete street",
         "content_type": 13,
-        "codename": "delete_deviceinstallationpoint"
+        "codename": "delete_street"
     }
 },
 {
     "model": "auth.permission",
     "pk": 52,
     "fields": {
-        "name": "Can view device installation point",
+        "name": "Can view street",
         "content_type": 13,
-        "codename": "view_deviceinstallationpoint"
+        "codename": "view_street"
     }
 },
 {
     "model": "auth.permission",
     "pk": 53,
     "fields": {
-        "name": "Can add device registry number",
+        "name": "Can add type street",
         "content_type": 14,
-        "codename": "add_deviceregistrynumber"
+        "codename": "add_typestreet"
     }
 },
 {
     "model": "auth.permission",
     "pk": 54,
     "fields": {
-        "name": "Can change device registry number",
+        "name": "Can change type street",
         "content_type": 14,
-        "codename": "change_deviceregistrynumber"
+        "codename": "change_typestreet"
     }
 },
 {
     "model": "auth.permission",
     "pk": 55,
     "fields": {
-        "name": "Can delete device registry number",
+        "name": "Can delete type street",
         "content_type": 14,
-        "codename": "delete_deviceregistrynumber"
+        "codename": "delete_typestreet"
     }
 },
 {
     "model": "auth.permission",
     "pk": 56,
     "fields": {
-        "name": "Can view device registry number",
+        "name": "Can view type street",
         "content_type": 14,
-        "codename": "view_deviceregistrynumber"
+        "codename": "view_typestreet"
     }
 },
 {
     "model": "auth.permission",
     "pk": 57,
     "fields": {
-        "name": "Can add device type",
+        "name": "Can add region",
         "content_type": 15,
-        "codename": "add_devicetype"
+        "codename": "add_region"
     }
 },
 {
     "model": "auth.permission",
     "pk": 58,
     "fields": {
-        "name": "Can change device type",
+        "name": "Can change region",
         "content_type": 15,
-        "codename": "change_devicetype"
+        "codename": "change_region"
     }
 },
 {
     "model": "auth.permission",
     "pk": 59,
     "fields": {
-        "name": "Can delete device type",
+        "name": "Can delete region",
         "content_type": 15,
-        "codename": "delete_devicetype"
+        "codename": "delete_region"
     }
 },
 {
     "model": "auth.permission",
     "pk": 60,
     "fields": {
-        "name": "Can view device type",
+        "name": "Can view region",
         "content_type": 15,
-        "codename": "view_devicetype"
+        "codename": "view_region"
     }
 },
 {
     "model": "auth.permission",
     "pk": 61,
     "fields": {
-        "name": "Can add device mod",
+        "name": "Can add device installation point",
         "content_type": 16,
-        "codename": "add_devicemod"
+        "codename": "add_deviceinstallationpoint"
     }
 },
 {
     "model": "auth.permission",
     "pk": 62,
     "fields": {
-        "name": "Can change device mod",
+        "name": "Can change device installation point",
         "content_type": 16,
-        "codename": "change_devicemod"
+        "codename": "change_deviceinstallationpoint"
     }
 },
 {
     "model": "auth.permission",
     "pk": 63,
     "fields": {
-        "name": "Can delete device mod",
+        "name": "Can delete device installation point",
         "content_type": 16,
-        "codename": "delete_devicemod"
+        "codename": "delete_deviceinstallationpoint"
     }
 },
 {
     "model": "auth.permission",
     "pk": 64,
     "fields": {
-        "name": "Can view device mod",
+        "name": "Can view device installation point",
         "content_type": 16,
-        "codename": "view_devicemod"
+        "codename": "view_deviceinstallationpoint"
     }
 },
 {
     "model": "auth.permission",
     "pk": 65,
     "fields": {
-        "name": "Can add device",
+        "name": "Can add device registry number",
         "content_type": 17,
-        "codename": "add_device"
+        "codename": "add_deviceregistrynumber"
     }
 },
 {
     "model": "auth.permission",
     "pk": 66,
     "fields": {
-        "name": "Can change device",
+        "name": "Can change device registry number",
         "content_type": 17,
-        "codename": "change_device"
+        "codename": "change_deviceregistrynumber"
     }
 },
 {
     "model": "auth.permission",
     "pk": 67,
     "fields": {
-        "name": "Can delete device",
+        "name": "Can delete device registry number",
         "content_type": 17,
-        "codename": "delete_device"
+        "codename": "delete_deviceregistrynumber"
     }
 },
 {
     "model": "auth.permission",
     "pk": 68,
     "fields": {
-        "name": "Can view device",
+        "name": "Can view device registry number",
         "content_type": 17,
-        "codename": "view_device"
+        "codename": "view_deviceregistrynumber"
     }
 },
 {
     "model": "auth.permission",
     "pk": 69,
     "fields": {
-        "name": "Can add device verification",
+        "name": "Can add device type",
         "content_type": 18,
-        "codename": "add_deviceverification"
+        "codename": "add_devicetype"
     }
 },
 {
     "model": "auth.permission",
     "pk": 70,
     "fields": {
-        "name": "Can change device verification",
+        "name": "Can change device type",
         "content_type": 18,
-        "codename": "change_deviceverification"
+        "codename": "change_devicetype"
     }
 },
 {
     "model": "auth.permission",
     "pk": 71,
     "fields": {
-        "name": "Can delete device verification",
+        "name": "Can delete device type",
         "content_type": 18,
-        "codename": "delete_deviceverification"
+        "codename": "delete_devicetype"
     }
 },
 {
     "model": "auth.permission",
     "pk": 72,
     "fields": {
-        "name": "Can view device verification",
+        "name": "Can view device type",
         "content_type": 18,
-        "codename": "view_deviceverification"
+        "codename": "view_devicetype"
     }
 },
 {
     "model": "auth.permission",
     "pk": 73,
     "fields": {
-        "name": "Can add type to registry",
+        "name": "Can add device mod",
         "content_type": 19,
-        "codename": "add_typetoregistry"
+        "codename": "add_devicemod"
     }
 },
 {
     "model": "auth.permission",
     "pk": 74,
     "fields": {
-        "name": "Can change type to registry",
+        "name": "Can change device mod",
         "content_type": 19,
-        "codename": "change_typetoregistry"
+        "codename": "change_devicemod"
     }
 },
 {
     "model": "auth.permission",
     "pk": 75,
     "fields": {
-        "name": "Can delete type to registry",
+        "name": "Can delete device mod",
         "content_type": 19,
-        "codename": "delete_typetoregistry"
+        "codename": "delete_devicemod"
     }
 },
 {
     "model": "auth.permission",
     "pk": 76,
     "fields": {
-        "name": "Can view type to registry",
+        "name": "Can view device mod",
         "content_type": 19,
+        "codename": "view_devicemod"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+        "name": "Can add device",
+        "content_type": 20,
+        "codename": "add_device"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+        "name": "Can change device",
+        "content_type": 20,
+        "codename": "change_device"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+        "name": "Can delete device",
+        "content_type": 20,
+        "codename": "delete_device"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+        "name": "Can view device",
+        "content_type": 20,
+        "codename": "view_device"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+        "name": "Can add device verification",
+        "content_type": 21,
+        "codename": "add_deviceverification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+        "name": "Can change device verification",
+        "content_type": 21,
+        "codename": "change_deviceverification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+        "name": "Can delete device verification",
+        "content_type": 21,
+        "codename": "delete_deviceverification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+        "name": "Can view device verification",
+        "content_type": 21,
+        "codename": "view_deviceverification"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+        "name": "Can add type to registry",
+        "content_type": 22,
+        "codename": "add_typetoregistry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+        "name": "Can change type to registry",
+        "content_type": 22,
+        "codename": "change_typetoregistry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+        "name": "Can delete type to registry",
+        "content_type": 22,
+        "codename": "delete_typetoregistry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+        "name": "Can view type to registry",
+        "content_type": 22,
         "codename": "view_typetoregistry"
     }
 },
@@ -687,7 +795,7 @@
     "model": "auth.user",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$720000$BpO5GVZc7UIplc4m1DYEjC$7ei5bzMAXMth3a0sRnApj/zXqP0nzJBDyK3OSex+lh4=",
+        "password": "pbkdf2_sha256$720000$fZpMdday1oRdiAm8i5cbwe$DcnDIoJM6p6ZQ/m1OPcOpaoyCn3TJ2B48qw6j1cs/lc=",
         "last_login": null,
         "is_superuser": true,
         "username": "admin",
@@ -696,7 +804,7 @@
         "email": "",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2024-09-08T21:10:08.757Z",
+        "date_joined": "2024-09-19T14:46:11.821Z",
         "groups": [],
         "user_permissions": []
     }
@@ -801,24 +909,24 @@
     "model": "contenttypes.contenttype",
     "pk": 13,
     "fields": {
-        "app_label": "device",
-        "model": "deviceinstallationpoint"
+        "app_label": "metering_unit",
+        "model": "street"
     }
 },
 {
     "model": "contenttypes.contenttype",
     "pk": 14,
     "fields": {
-        "app_label": "device",
-        "model": "deviceregistrynumber"
+        "app_label": "metering_unit",
+        "model": "typestreet"
     }
 },
 {
     "model": "contenttypes.contenttype",
     "pk": 15,
     "fields": {
-        "app_label": "device",
-        "model": "devicetype"
+        "app_label": "metering_unit",
+        "model": "region"
     }
 },
 {
@@ -826,7 +934,7 @@
     "pk": 16,
     "fields": {
         "app_label": "device",
-        "model": "devicemod"
+        "model": "deviceinstallationpoint"
     }
 },
 {
@@ -834,7 +942,7 @@
     "pk": 17,
     "fields": {
         "app_label": "device",
-        "model": "device"
+        "model": "deviceregistrynumber"
     }
 },
 {
@@ -842,12 +950,36 @@
     "pk": 18,
     "fields": {
         "app_label": "device",
-        "model": "deviceverification"
+        "model": "devicetype"
     }
 },
 {
     "model": "contenttypes.contenttype",
     "pk": 19,
+    "fields": {
+        "app_label": "device",
+        "model": "devicemod"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 20,
+    "fields": {
+        "app_label": "device",
+        "model": "device"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 21,
+    "fields": {
+        "app_label": "device",
+        "model": "deviceverification"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 22,
     "fields": {
         "app_label": "device",
         "model": "typetoregistry"
