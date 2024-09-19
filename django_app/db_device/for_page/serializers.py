@@ -49,7 +49,7 @@ class AddressesSerializer(MySerializer):
         source="service_organization.name", read_only=True
     )
     tso = serializers.CharField(source="tso.name", read_only=True)
-    city = serializers.CharField(source="address.city", read_only=True)
+    region = serializers.CharField(source="address.region", read_only=True)
     street = serializers.CharField(source="address.street", read_only=True)
     house_number = serializers.CharField(source="address.house_number", read_only=True)
     corp = serializers.CharField(source="address.corp", read_only=True)
