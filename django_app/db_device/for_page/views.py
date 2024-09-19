@@ -24,12 +24,12 @@ class MenuListAPIView(ListAPIView):
         pk__in=MeteringUnit.objects.values_list("tso", flat=True)
     )
     serializer_class = MenuSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
 
 class AddressListAPIView(ListAPIView):
     serializer_class = AddressesSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         queryset = (
@@ -38,14 +38,26 @@ class AddressListAPIView(ListAPIView):
             .select_related("tso")
             .select_related("address")
         )
-        if self.request.query_params.get("customer") is None:
-            return queryset
-        return queryset.filter(customer=self.request.query_params.get("customer"))
+        if (
+            self.request.query_params.get("customer") is not None
+            and self.request.query_params.get("tso") is not None
+        ):
+            return queryset.filter(
+                customer=self.request.query_params.get("customer"),
+                tso=self.request.query_params.get("tso"),
+            )
+        elif self.request.query_params.get("customer") is not None:
+            queryset = queryset.filter(
+                customer=self.request.query_params.get("customer")
+            )
+        elif self.request.query_params.get("tso") is not None:
+            queryset = queryset.filter(tso=self.request.query_params.get("tso"))
+        return queryset
 
 
 class DeviceListAPIView(ListAPIView):
     serializer_class = ShortDeviceSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         queryset = (
