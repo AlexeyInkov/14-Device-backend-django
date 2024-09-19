@@ -63,7 +63,7 @@ class AddressesSerializer(MySerializer):
             "customer",
             "service_organization",
             "tso",
-            "city",
+            "region",
             "street",
             "house_number",
             "corp",
@@ -92,7 +92,7 @@ class ShortDeviceSerializer(MySerializer):
 
     factory_number = serializers.CharField(read_only=True)
     verification = ShortDeviceVerificationSerializer(
-        source="filtered_verifications",
+        source="verifications",
         many=True,
         read_only=True,
     )
