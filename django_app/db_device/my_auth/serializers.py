@@ -8,7 +8,7 @@ from metering_unit.serializers import OrganizationSerializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = "username", "password", "email"
+        fields = ("username", "password")
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):

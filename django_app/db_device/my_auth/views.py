@@ -17,7 +17,7 @@ class UserRegisterAPIView(CreateAPIView):
     serializer_class = UserSerializer
 
 
-class UserLoginAPIView(APIView):
+class UserLoginAPIView(CreateAPIView):
     serializer_class = UserSerializer
 
     def post(self, request):
