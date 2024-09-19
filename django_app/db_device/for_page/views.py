@@ -71,7 +71,7 @@ class DeviceListAPIView(ListAPIView):
                 Prefetch(
                     "verifications",
                     queryset=DeviceVerification.objects.filter(
-                        is_actual=True, is_delete=False
+                        is_actual=False, is_delete=False
                     ),
                 )
             )
