@@ -55,8 +55,8 @@ class Region(BaseTimeModel):
 
 
 class TypeStreet(BaseTimeModel):
-    name = models.CharField(max_length=10, unique=True)
-    fullname = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=10, unique=True, blank=True)
+    fullname = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.name
@@ -88,8 +88,8 @@ class Address(BaseTimeModel):
         address = []
         if self.region:
             address.append(str(self.region))
-        if self.street_new:
-            address.append(str(self.street_new))
+        if self.street:
+            address.append(str(self.street))
         if self.house_number:
             address.append(f"д. {str(self.house_number)}")
         if self.corp:
