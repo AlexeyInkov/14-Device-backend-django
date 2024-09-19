@@ -1,3 +1,5 @@
+from rest_framework import serializers
+
 from .baseserializers import MySerializer
 from .models import (
     UserToOrganization,
@@ -35,9 +37,13 @@ class TypeStreetSerializer(MySerializer):
 
 
 class StreetSerializer(MySerializer):
+    type_street = serializers.PrimaryKeyRelatedField(
+        queryset=TypeStreet.objects.all(), many=False, required=False
+    )
+
     class Meta:
         model = Street
-        fields = "id", "name"
+        fields = "id", "name", "type_street"
 
 
 class AddressSerializer(MySerializer):
