@@ -4,6 +4,9 @@ from .models import (
     Organization,
     Address,
     MeteringUnit,
+    Street,
+    TypeStreet,
+    Region,
 )
 
 
@@ -16,10 +19,25 @@ class UserToOrganizationSerializer(MySerializer):
 class OrganizationSerializer(MySerializer):
     class Meta:
         model = Organization
-        fields = (
-            "id",
-            "name",
-        )
+        fields = "id", "name"
+
+
+class RegionSerializer(MySerializer):
+    class Meta:
+        model = Region
+        fields = "id", "name"
+
+
+class TypeStreetSerializer(MySerializer):
+    class Meta:
+        model = TypeStreet
+        fields = "id", "name"
+
+
+class StreetSerializer(MySerializer):
+    class Meta:
+        model = Street
+        fields = "id", "name"
 
 
 class AddressSerializer(MySerializer):
