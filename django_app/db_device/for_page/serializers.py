@@ -7,7 +7,7 @@ from device.models import (
     Device,
     DeviceVerification,
 )
-from metering_unit.models import MeteringUnit, Organization
+from metering_unit.models import MeteringUnit, Organization, Address
 
 
 class MenuCustomerSerializer(MySerializer):
@@ -43,18 +43,42 @@ class MenuSerializer(MySerializer):
         )
 
 
+class MenuAddressSerializer(MySerializer):
+    class Meta:
+        model = Address
+        fields = "region", "street", "house_number", "corp", "liter"
+
+
 class AddressesSerializer(MySerializer):
     customer = serializers.CharField(source="customer.name", read_only=True)
     service_organization = serializers.CharField(
         source="service_organization.name", read_only=True
     )
     tso = serializers.CharField(source="tso.name", read_only=True)
-    region = serializers.CharField(source="address.region", read_only=True)
-    street = serializers.CharField(source="address.street", read_only=True)
-    house_number = serializers.CharField(source="address.house_number", read_only=True)
-    corp = serializers.CharField(source="address.corp", read_only=True)
-    liter = serializers.CharField(source="address.liter", read_only=True)
+    address = serializers.SerializerMethodField()
     itp = serializers.CharField(read_only=True)
+    location = serializers.SerializerMethodField()
+
+    def get_address(self, obj):
+        address = []
+        if obj.address.region:
+            address.append(str(obj.address.region))
+        if obj.address.street:
+            address.append(str(obj.address.street))
+        if obj.address.house_number:
+            address.append(f"д. {str(obj.address.house_number)}")
+        if obj.address.corp:
+            address.append(f"корп. {str(obj.address.corp)}")
+        if obj.address.liter:
+            address.append(f"лит {str(obj.address.liter)}")
+        return ", ".join(address)
+
+    def get_location(self, obj):
+        if obj.address.latitude and obj.address.longitude:
+            return {
+                "latitude": obj.address.latitude,
+                "longitude": obj.address.longitude,
+            }
 
     class Meta:
         model = MeteringUnit
@@ -63,12 +87,9 @@ class AddressesSerializer(MySerializer):
             "customer",
             "service_organization",
             "tso",
-            "region",
-            "street",
-            "house_number",
-            "corp",
-            "liter",
+            "address",
             "itp",
+            "location",
         )
 
 
