@@ -1,50 +1,30 @@
 networks:
-  net:
+  dev:
 
 services:
-  kafka:
-    container_name: kafka_container
-    image: apache/kafka:3.8.0
+  nginx:
+    image: nginx:stable-alpine
     ports:
-      - "9092:9092"
-    restart: unless-stopped
-    networks:
-      - net
-
-
-  postgres:
-    container_name: postgres_container
-    image: postgres:14.8-alpine3.18
-    environment:
-      POSTGRES_DB: "mydb"
-      POSTGRES_USER: "mydbuser"
-      POSTGRES_PASSWORD: "mydbpassword"
-      PGDATA: "/var/lib/postgresql/data/pgdata"
+      - "80:80"
+      - "443:443"
     volumes:
-      - ../2. Init Database:/docker-entrypoint-initdb.d
-      - pg-data:/var/lib/postgresql/data
-    ports:
-      - "15432:5432"
-    restart: unless-stopped
+      - './nginx.conf:/etc/nginx/nginx.conf'
+      - '/etc/letsencrypt:/etc/letsencrypt'
+    depends_on:
+      - backend
+      - frontend
     networks:
-      - net
+      - dev
 
-  pgadmin:
-    container_name: pgadmin_container
-    image: dpage/pgadmin4:8.10
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "alex0982@mail.ru"
-      PGADMIN_DEFAULT_PASSWORD: "pgadminpassword"
-      PGADMIN_CONFIG_SERVER_MODE: "False"
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    ports:
-      - "5050:80"
-    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./django_app
     networks:
-      - net
+      - dev
 
-
-volumes:
-  pg-data:
-  pgadmin-data:
+  frontend:
+    build:
+      context: ./frontend
+    networks:
+      - dev

@@ -7,7 +7,7 @@ COPY requirements.txt .
 
 RUN pip install - r requirements.txt
 
-COPY django_app/db_device .
+COPY db_device .
 
 
 
