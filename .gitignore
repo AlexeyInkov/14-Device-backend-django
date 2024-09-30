@@ -4,10 +4,11 @@
 *staticfiles/
 *django_app/db_device/db/
 *django_app/db_device/staticfiles/
-django_app/docker-compose.yml
+
 /__pycache__/
 *.pyc
 /log/
+
 
 # Logs
 logs
@@ -33,3 +34,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
