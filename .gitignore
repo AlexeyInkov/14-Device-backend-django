@@ -1,7 +1,11 @@
-/.env
-/report/
-/main.py  укажи месяц.lnk
-/.idea
-/nodes.json
-/sourse_data/
+*.env
+/.idea/
+*.sqlite3
+*staticfiles/
+*django_app/db_device/db/
+*django_app/db_device/staticfiles/
+docker-compose.yml
+/__pycache__/
+*.pyc
 /log/
+
