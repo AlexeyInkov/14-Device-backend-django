@@ -49,10 +49,10 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "drf_yasg",
     "corsheaders",
-    "my_auth.apps.MyAuthConfig",
-    "for_page.apps.ForPageConfig",
-    "metering_unit.apps.MeteringUnitConfig",
-    "device.apps.DeviceConfig",
+    "my_auth.apps",
+    "for_page",
+    "metering_unit",
+    "device",
 ]
 
 MIDDLEWARE = [
@@ -168,6 +168,10 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://192.168.0.101:5174",
     "http://localhost:5174",
+    "http://192.168.0.101:5173",
+    "http://localhost:5173",
+    "http://192.168.0.101:4173",
+    "http://localhost:4173",
 ]
 
 # Default primary key field type
