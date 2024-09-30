@@ -98,7 +98,11 @@ class ShortDeviceVerificationSerializer(MySerializer):
         model = DeviceVerification
         fields = (
             "id",
+            "organization",
+            "verification_date",
             "valid_date",
+            "is_actual",
+            "is_delete",
         )
 
 
