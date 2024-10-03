@@ -1,6 +1,3 @@
-// const express = require('express');
-// require('dotenv').config()
-// const app = express();
 export const DEBUG = import.meta.env.VITE_DEBUG==="true" || false;
 export const BASENAME = ''; // не добавляйте '/' в конце BASENAME
 export const BASE_TITLE = import.meta.env.VITE_VITE_BASE_TITLE;
