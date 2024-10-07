@@ -9,9 +9,6 @@ RUN pip install -r requirements.txt
 
 COPY db_device .
 
-COPY script.sh .
-RUN chmod +x ./script.sh
-CMD ["./script.sh"]
 
 
 
