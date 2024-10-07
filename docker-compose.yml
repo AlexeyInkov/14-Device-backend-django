@@ -9,7 +9,11 @@ services:
       - dev
     env_file:
       - .env
-    command: python manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             python manage.py loaddata fixtures/db_20240918_new_address_region.json &&
+             python manage.py runserver 0.0.0.0:8000"
 #    ports:
 #      - "8000:8000"
 
